@@ -1,0 +1,443 @@
+.
+├── CMakeCache.txt
+├── CMakeFiles
+│   ├── 3.26.4
+│   │   ├── CMakeCCompiler.cmake
+│   │   ├── CMakeCXXCompiler.cmake
+│   │   ├── CMakeDetermineCompilerABI_C.bin
+│   │   ├── CMakeDetermineCompilerABI_CXX.bin
+│   │   ├── CMakeSystem.cmake
+│   │   ├── CompilerIdC
+│   │   │   ├── CMakeCCompilerId.c
+│   │   │   ├── CMakeCCompilerId.o
+│   │   │   └── tmp
+│   │   └── CompilerIdCXX
+│   │       ├── CMakeCXXCompilerId.cpp
+│   │       ├── CMakeCXXCompilerId.o
+│   │       └── tmp
+│   ├── CMakeConfigureLog.yaml
+│   ├── CMakeDirectoryInformation.cmake
+│   ├── CMakeRuleHashes.txt
+│   ├── CMakeScratch
+│   ├── CheckTypeSize
+│   │   ├── DOUBLE.bin
+│   │   └── LONG_DOUBLE.bin
+│   ├── Makefile.cmake
+│   ├── Makefile2
+│   ├── TargetDirectories.txt
+│   ├── cmake.check_cache
+│   ├── exampleprograms.dir
+│   │   ├── DependInfo.cmake
+│   │   ├── build.make
+│   │   ├── cmake_clean.cmake
+│   │   ├── compiler_depend.make
+│   │   ├── compiler_depend.ts
+│   │   └── progress.make
+│   ├── pkgRedirects
+│   └── progress.marks
+├── CPackConfig.cmake
+├── CPackSourceConfig.cmake
+├── CTestTestfile.cmake
+├── Makefile
+├── cat.txt
+├── cmake
+│   ├── CMakeFiles
+│   │   ├── CMakeDirectoryInformation.cmake
+│   │   ├── Export
+│   │   │   └── 5acc1f8553cd6b105f0ed8d3a154af2b
+│   │   │       ├── geographiclib-targets-release.cmake
+│   │   │       └── geographiclib-targets.cmake
+│   │   └── progress.marks
+│   ├── Makefile
+│   ├── cmake_install.cmake
+│   ├── geographiclib.pc
+│   ├── project-config-version.cmake
+│   └── project-config.cmake
+├── cmake_install.cmake
+├── doc
+│   ├── CMakeFiles
+│   │   ├── CMakeDirectoryInformation.cmake
+│   │   └── progress.marks
+│   ├── Makefile
+│   ├── cmake_install.cmake
+│   ├── html
+│   │   ├── LICENSE.txt
+│   │   ├── index.html
+│   │   └── utilities.html
+│   └── html-stage
+├── examples
+│   ├── CMakeFiles
+│   │   ├── CMakeDirectoryInformation.cmake
+│   │   └── progress.marks
+│   ├── Makefile
+│   └── cmake_install.cmake
+├── experimental
+│   ├── CMakeFiles
+│   │   ├── CMakeDirectoryInformation.cmake
+│   │   ├── JacobiConformal.dir
+│   │   │   ├── DependInfo.cmake
+│   │   │   ├── build.make
+│   │   │   ├── cmake_clean.cmake
+│   │   │   ├── compiler_depend.make
+│   │   │   ├── compiler_depend.ts
+│   │   │   ├── depend.make
+│   │   │   ├── flags.make
+│   │   │   ├── link.txt
+│   │   │   └── progress.make
+│   │   ├── experimental.dir
+│   │   │   ├── DependInfo.cmake
+│   │   │   ├── build.make
+│   │   │   ├── cmake_clean.cmake
+│   │   │   ├── compiler_depend.make
+│   │   │   ├── compiler_depend.ts
+│   │   │   └── progress.make
+│   │   └── progress.marks
+│   ├── CTestTestfile.cmake
+│   ├── Makefile
+│   └── cmake_install.cmake
+├── geographiclib-config-version.cmake
+├── geographiclib-config.cmake
+├── geographiclib-targets.cmake
+├── include
+│   └── GeographicLib
+│       ├── CMakeFiles
+│       │   ├── CMakeDirectoryInformation.cmake
+│       │   └── progress.marks
+│       ├── Config.h
+│       ├── Makefile
+│       └── cmake_install.cmake
+├── man
+│   ├── CMakeFiles
+│   │   ├── CMakeDirectoryInformation.cmake
+│   │   └── progress.marks
+│   ├── Makefile
+│   ├── cmake_install.cmake
+│   ├── geographiclib-get-geoids.8
+│   ├── geographiclib-get-gravity.8
+│   └── geographiclib-get-magnetic.8
+├── src
+│   ├── CMakeFiles
+│   │   ├── CMakeDirectoryInformation.cmake
+│   │   ├── GeographicLib_SHARED.dir
+│   │   │   ├── Accumulator.cpp.o
+│   │   │   ├── Accumulator.cpp.o.d
+│   │   │   ├── AlbersEqualArea.cpp.o
+│   │   │   ├── AlbersEqualArea.cpp.o.d
+│   │   │   ├── AuxAngle.cpp.o
+│   │   │   ├── AuxAngle.cpp.o.d
+│   │   │   ├── AuxLatitude.cpp.o
+│   │   │   ├── AuxLatitude.cpp.o.d
+│   │   │   ├── AzimuthalEquidistant.cpp.o
+│   │   │   ├── AzimuthalEquidistant.cpp.o.d
+│   │   │   ├── CassiniSoldner.cpp.o
+│   │   │   ├── CassiniSoldner.cpp.o.d
+│   │   │   ├── CircularEngine.cpp.o
+│   │   │   ├── CircularEngine.cpp.o.d
+│   │   │   ├── DAuxLatitude.cpp.o
+│   │   │   ├── DAuxLatitude.cpp.o.d
+│   │   │   ├── DMS.cpp.o
+│   │   │   ├── DMS.cpp.o.d
+│   │   │   ├── DST.cpp.o
+│   │   │   ├── DST.cpp.o.d
+│   │   │   ├── DependInfo.cmake
+│   │   │   ├── Ellipsoid.cpp.o
+│   │   │   ├── Ellipsoid.cpp.o.d
+│   │   │   ├── EllipticFunction.cpp.o
+│   │   │   ├── EllipticFunction.cpp.o.d
+│   │   │   ├── GARS.cpp.o
+│   │   │   ├── GARS.cpp.o.d
+│   │   │   ├── GeoCoords.cpp.o
+│   │   │   ├── GeoCoords.cpp.o.d
+│   │   │   ├── Geocentric.cpp.o
+│   │   │   ├── Geocentric.cpp.o.d
+│   │   │   ├── Geodesic.cpp.o
+│   │   │   ├── Geodesic.cpp.o.d
+│   │   │   ├── GeodesicExact.cpp.o
+│   │   │   ├── GeodesicExact.cpp.o.d
+│   │   │   ├── GeodesicLine.cpp.o
+│   │   │   ├── GeodesicLine.cpp.o.d
+│   │   │   ├── GeodesicLineExact.cpp.o
+│   │   │   ├── GeodesicLineExact.cpp.o.d
+│   │   │   ├── Geohash.cpp.o
+│   │   │   ├── Geohash.cpp.o.d
+│   │   │   ├── Geoid.cpp.o
+│   │   │   ├── Geoid.cpp.o.d
+│   │   │   ├── Georef.cpp.o
+│   │   │   ├── Georef.cpp.o.d
+│   │   │   ├── Gnomonic.cpp.o
+│   │   │   ├── Gnomonic.cpp.o.d
+│   │   │   ├── GravityCircle.cpp.o
+│   │   │   ├── GravityCircle.cpp.o.d
+│   │   │   ├── GravityModel.cpp.o
+│   │   │   ├── GravityModel.cpp.o.d
+│   │   │   ├── LambertConformalConic.cpp.o
+│   │   │   ├── LambertConformalConic.cpp.o.d
+│   │   │   ├── LocalCartesian.cpp.o
+│   │   │   ├── LocalCartesian.cpp.o.d
+│   │   │   ├── MGRS.cpp.o
+│   │   │   ├── MGRS.cpp.o.d
+│   │   │   ├── MagneticCircle.cpp.o
+│   │   │   ├── MagneticCircle.cpp.o.d
+│   │   │   ├── MagneticModel.cpp.o
+│   │   │   ├── MagneticModel.cpp.o.d
+│   │   │   ├── Math.cpp.o
+│   │   │   ├── Math.cpp.o.d
+│   │   │   ├── NormalGravity.cpp.o
+│   │   │   ├── NormalGravity.cpp.o.d
+│   │   │   ├── OSGB.cpp.o
+│   │   │   ├── OSGB.cpp.o.d
+│   │   │   ├── PolarStereographic.cpp.o
+│   │   │   ├── PolarStereographic.cpp.o.d
+│   │   │   ├── PolygonArea.cpp.o
+│   │   │   ├── PolygonArea.cpp.o.d
+│   │   │   ├── Rhumb.cpp.o
+│   │   │   ├── Rhumb.cpp.o.d
+│   │   │   ├── SphericalEngine.cpp.o
+│   │   │   ├── SphericalEngine.cpp.o.d
+│   │   │   ├── TransverseMercator.cpp.o
+│   │   │   ├── TransverseMercator.cpp.o.d
+│   │   │   ├── TransverseMercatorExact.cpp.o
+│   │   │   ├── TransverseMercatorExact.cpp.o.d
+│   │   │   ├── UTMUPS.cpp.o
+│   │   │   ├── UTMUPS.cpp.o.d
+│   │   │   ├── Utility.cpp.o
+│   │   │   ├── Utility.cpp.o.d
+│   │   │   ├── build.make
+│   │   │   ├── cmake_clean.cmake
+│   │   │   ├── compiler_depend.make
+│   │   │   ├── compiler_depend.ts
+│   │   │   ├── depend.make
+│   │   │   ├── flags.make
+│   │   │   ├── link.txt
+│   │   │   └── progress.make
+│   │   └── progress.marks
+│   ├── Makefile
+│   ├── cmake_install.cmake
+│   ├── libGeographicLib.24.1.0.dylib
+│   ├── libGeographicLib.24.dylib -> libGeographicLib.24.1.0.dylib
+│   └── libGeographicLib.dylib -> libGeographicLib.24.dylib
+├── tests
+│   ├── CMakeFiles
+│   │   ├── CMakeDirectoryInformation.cmake
+│   │   ├── geodtest.dir
+│   │   │   ├── DependInfo.cmake
+│   │   │   ├── build.make
+│   │   │   ├── cmake_clean.cmake
+│   │   │   ├── compiler_depend.make
+│   │   │   ├── compiler_depend.ts
+│   │   │   ├── depend.make
+│   │   │   ├── flags.make
+│   │   │   ├── geodtest.cpp.o
+│   │   │   ├── geodtest.cpp.o.d
+│   │   │   ├── link.txt
+│   │   │   └── progress.make
+│   │   ├── polygontest.dir
+│   │   │   ├── DependInfo.cmake
+│   │   │   ├── build.make
+│   │   │   ├── cmake_clean.cmake
+│   │   │   ├── compiler_depend.make
+│   │   │   ├── compiler_depend.ts
+│   │   │   ├── depend.make
+│   │   │   ├── flags.make
+│   │   │   ├── link.txt
+│   │   │   ├── polygontest.cpp.o
+│   │   │   ├── polygontest.cpp.o.d
+│   │   │   └── progress.make
+│   │   ├── progress.marks
+│   │   ├── signtest.dir
+│   │   │   ├── DependInfo.cmake
+│   │   │   ├── build.make
+│   │   │   ├── cmake_clean.cmake
+│   │   │   ├── compiler_depend.make
+│   │   │   ├── compiler_depend.ts
+│   │   │   ├── depend.make
+│   │   │   ├── flags.make
+│   │   │   ├── link.txt
+│   │   │   ├── progress.make
+│   │   │   ├── signtest.cpp.o
+│   │   │   └── signtest.cpp.o.d
+│   │   └── testprograms.dir
+│   │       ├── DependInfo.cmake
+│   │       ├── build.make
+│   │       ├── cmake_clean.cmake
+│   │       ├── compiler_depend.make
+│   │       ├── compiler_depend.ts
+│   │       └── progress.make
+│   ├── CTestTestfile.cmake
+│   ├── Makefile
+│   ├── cmake_install.cmake
+│   ├── geodtest
+│   ├── polygontest
+│   └── signtest
+└── tools
+    ├── CMakeFiles
+    │   ├── CMakeDirectoryInformation.cmake
+    │   ├── CartConvert.dir
+    │   │   ├── CartConvert.cpp.o
+    │   │   ├── CartConvert.cpp.o.d
+    │   │   ├── DependInfo.cmake
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── ConicProj.dir
+    │   │   ├── ConicProj.cpp.o
+    │   │   ├── ConicProj.cpp.o.d
+    │   │   ├── DependInfo.cmake
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── GeoConvert.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── GeoConvert.cpp.o
+    │   │   ├── GeoConvert.cpp.o.d
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── GeodSolve.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── GeodSolve.cpp.o
+    │   │   ├── GeodSolve.cpp.o.d
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── GeodesicProj.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── GeodesicProj.cpp.o
+    │   │   ├── GeodesicProj.cpp.o.d
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── GeoidEval.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── GeoidEval.cpp.o
+    │   │   ├── GeoidEval.cpp.o.d
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── Gravity.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── Gravity.cpp.o
+    │   │   ├── Gravity.cpp.o.d
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── MagneticField.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── MagneticField.cpp.o
+    │   │   ├── MagneticField.cpp.o.d
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── Planimeter.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── Planimeter.cpp.o
+    │   │   ├── Planimeter.cpp.o.d
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── RhumbSolve.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── RhumbSolve.cpp.o
+    │   │   ├── RhumbSolve.cpp.o.d
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── TransverseMercatorProj.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── TransverseMercatorProj.cpp.o
+    │   │   ├── TransverseMercatorProj.cpp.o.d
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   ├── depend.make
+    │   │   ├── flags.make
+    │   │   ├── link.txt
+    │   │   └── progress.make
+    │   ├── progress.marks
+    │   ├── scripts.dir
+    │   │   ├── DependInfo.cmake
+    │   │   ├── build.make
+    │   │   ├── cmake_clean.cmake
+    │   │   ├── compiler_depend.make
+    │   │   ├── compiler_depend.ts
+    │   │   └── progress.make
+    │   └── tools.dir
+    │       ├── DependInfo.cmake
+    │       ├── build.make
+    │       ├── cmake_clean.cmake
+    │       ├── compiler_depend.make
+    │       ├── compiler_depend.ts
+    │       └── progress.make
+    ├── CartConvert
+    ├── ConicProj
+    ├── GeoConvert
+    ├── GeodSolve
+    ├── GeodesicProj
+    ├── GeoidEval
+    ├── Gravity
+    ├── MagneticField
+    ├── Makefile
+    ├── Planimeter
+    ├── RhumbSolve
+    ├── TransverseMercatorProj
+    ├── cmake_install.cmake
+    ├── geographiclib-get-geoids
+    ├── geographiclib-get-gravity
+    ├── geographiclib-get-magnetic
+    └── scripts
+        ├── geographiclib-get-geoids
+        ├── geographiclib-get-gravity
+        └── geographiclib-get-magnetic
+
+55 directories, 386 files
