@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     QLabel *redPoint = new QLabel(this);
-    redPoint->setFixedSize(10, 10); // Définissez la taille du point
+    redPoint->setFixedSize(10, 10); 
     redPoint->setAutoFillBackground(true);
     redPoint->setStyleSheet("background-color: red; border-radius: 5px;");
 
@@ -20,13 +20,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     QGridLayout *mainLayout = new QGridLayout();
 
-    // Ajouter le widget map à la grille et le faire occuper 3/4 de l'espace
     mainLayout->addWidget(map, 0, 0, 1, 4);
 
-    // Ajouter la sidebar à droite de la grille
     mainLayout->addWidget(sidebar, 0, 3);
 
-    // Créer un widget pour contenir le layout
     QWidget *mainWidget = new QWidget(this);
     mainWidget->setLayout(mainLayout);
 
