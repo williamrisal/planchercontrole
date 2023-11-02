@@ -1,0 +1,23 @@
+{
+    "Occitanie":
+        {
+            "path": "region-occitanie.geojson"
+        },
+    "Nouvelle-Aquitaine":
+        {
+            "path": "region-nouvelle-aquitaine.geojson"
+        },
+    "Pays de la Loire":
+        {
+            "path": "region-pays-de-la-loire.geojson"
+        },
+    "Bretagne":
+        {
+            "path": "region-bretagne.geojson"
+        },
+    "Provence-Alpes-Côte d'Azur":
+        {
+            "path": "region-provence-alpes-cote-d-azur.geojson"
+        }
+
+}

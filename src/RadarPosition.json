@@ -1,0 +1,37 @@
+{
+    "DI Istres": {
+        "Image_Path": "/Users/williamrisal/Documents/DGA projet/planchercontrole-main/capture/Radar Aladin Istres DI/capture_DI_",
+        "Position": "N43°31'26' E04°55'33'",
+        "Rectification": "{0,0,0}"
+    },
+    "DS Salon de Provence": {
+        "Image_Path": "/Users/williamrisal/Documents/DGA projet/planchercontrole-main/capture/Radar Centaure Salon DS/capture_DS_",
+        "Position": "N43°36'11' E05°06'29'",
+        "Rectification": "{-910,-555,65}"
+    },
+    "GV Vitrolles": {
+        "Image_Path": "/Users/williamrisal/Documents/DGA projet/planchercontrole-main/capture/Radar TRAC2000 Vitrolles GV/capture_GV_",
+        "Position": "N43°28'10' E05°14'43'",
+        "Rectification": "{0,0,0}"
+    },
+    "JO Montpellier": {
+        "Image_Path": "/Users/williamrisal/Documents/DGA projet/planchercontrole-main/capture/Radar RMI Montpellier JO/capture_JO_",
+        "Position": "N43°47'12' E03°14'44'",
+        "Rectification": "{0,0,0}"
+    },
+    "JX Ventoux": {
+        "Image_Path": "/Users/williamrisal/Documents/DGA projet/planchercontrole-main/capture/Radar RMI Mont Ventoux JX/capture_JX_",
+        "Position": "N44°10'27' E05°16'06'",
+        "Rectification": "{-880,-470,35}"
+    },
+    "RO Narbonne": {
+        "Image_Path": "/Users/williamrisal/Documents/DGA projet/planchercontrole-main/capture/Radar TRAC2400 Narbonne/capture_RO_",
+        "Position": "N43°10'28' E03°07'18'",
+        "Rectification": "{-660,-630,75}"
+    },
+    "RS Sainte Baume": {
+        "Image_Path": "/Users/williamrisal/Documents/DGA projet/planchercontrole-main/capture/Radar TRAC2400 Sainte Baume RS/capture_RS_",
+        "Position": "N43°18'42' E05°41'21'",
+        "Rectification": "{0,0,0}"
+    }
+}

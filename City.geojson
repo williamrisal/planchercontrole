@@ -1,0 +1,225 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Bordeaux"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-0.57918, 44.837789]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Brest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-4.49419, 48.390394]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Clermont-Ferrand"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.086472, 45.777222]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Dijon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.041470, 47.322048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Grenoble"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.724524, 45.188529]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Lille"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.058756, 50.629250]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Lyon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.835660, 45.757813]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Marseille"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.369780, 43.296482]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Metz"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.175715, 49.119308]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Montpellier"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [3.876716, 43.611015]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Nancy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [6.186595, 48.693722]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Nantes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.553621, 47.218371]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Nice"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.265995, 43.703434]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Orléans"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1.902277, 47.902964]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Paris"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [2.352222, 48.856613]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Rennes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-1.680019, 48.111980]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Rouen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0.898650, 49.442971]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Saint-Étienne"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.387177, 45.439695]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Strasbourg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.752111, 48.573405]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Toulon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5.939093, 43.124228]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Toulouse"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1.444209, 43.604652]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Tours"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [0.703125, 47.394144]
+      }
+    }
+  ]
+}

@@ -16,7 +16,13 @@ MainWindow::MainWindow(QWidget *parent)
     MapImage *map = new MapImage(this);
     SideBarPreference *sidebar = new SideBarPreference(this);
 
-    connect(sidebar, &SideBarPreference::sliderValueChanged, map, &MapImage::setAltitude);
+    connect(sidebar, &SideBarPreference::sliderValueChanged, map, &MapImage::setaltitude);
+    connect(sidebar, &SideBarPreference::checkBoxRadarStateChanged, map, &MapImage::showOnlyRadar);
+    connect(sidebar, &SideBarPreference::checkBoxStateChangedCulminante, map, &MapImage::ShowElementCulminante);
+    connect(sidebar, &SideBarPreference::checkBoxStateChangedStrategique, map, &MapImage::ShowElementStrategique);
+
+    //position image (admin)
+    connect(sidebar, &SideBarPreference::buttonClickedSignal, map, &MapImage::moveImage);
 
     QGridLayout *mainLayout = new QGridLayout();
 
@@ -26,25 +32,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     QWidget *mainWidget = new QWidget(this);
     mainWidget->setLayout(mainLayout);
-
-
-   /* Position_Aeronef point_position;
-    double *position = new double[3];
-    position = point_position.Position_point();
-
-    double scaleFactor = 0.15;
-    double scaledX = std::round(position[0] * scaleFactor / (1280 / 2));
-    double scaledY = std::round(position[1] * scaleFactor / (720 / 2));
-
-    double x_final = scaledX + 640;
-    double y_final = abs((scaledY + 360) - 720);
-
-    std::cout << "Scaled coordinates:" << std::endl;
-    std::cout << "x: " << x_final << std::endl;
-    std::cout << "y: " << y_final << std::endl;
-
-    bluepoint->move(x_final, y_final);
-*/
 
     setCentralWidget(mainWidget);
 }

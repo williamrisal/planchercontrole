@@ -1,0 +1,30 @@
+{
+  "Narbone": {
+    "Position": "N43°10'28' E03°07'18'",
+    "Rectification": "{0,0}"
+  },
+  "Salon": {
+    "Position": "N43°36'11' E05°06'29'",
+    "Rectification": "{0,0}"
+  },
+  "SainteBaume": {
+    "Position": "N43°18'42' E05°41'21'",
+    "Rectification": "{0,0}"
+  },
+  "Istre": {
+    "Position": "N43°31'26' E04°55'33'",
+    "Rectification": "{0,0}"
+  },
+  "Vitrolles": {
+    "Position": "N43°28'10' E05°14'43'",
+    "Rectification": "{0,0}"
+  },
+  "Montpellier": {
+    "Position": "N43°47'12' E03°14'44'",
+    "Rectification": "{0,0}"
+  },
+  "Ventoux": {
+    "Position": "N44°10'27' E05°16'06'",
+    "Rectification": "{0,0}"
+  }
+}

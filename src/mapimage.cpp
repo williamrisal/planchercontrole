@@ -1,62 +1,229 @@
 #include "mapimage.hpp"
-#include "src/position_aeronef.hpp"
+#include "QtWidgets/qgraphicsitem.h"
+#include "showimage.hpp"
+#include <QJsonObject>
+#include <QJsonDocument>
 
-MapImage::MapImage(QWidget *parent) : QWidget(parent)
-{
-    /*std::cout << "image" << std::endl;
 
-    this->setGeometry(0, 0, 300, 100);
 
-    QPalette pal = QPalette();
+MapImage::MapImage(QWidget *parent) : QGraphicsView(parent) {
+    setFocus();
+    setDragMode(QGraphicsView::ScrollHandDrag);
+    setInteractive(true);
 
-    pal.setColor(QPalette::Window, "#51555b");
+    scene = new QGraphicsScene(this);
+    scene->setBackgroundBrush(QColor("#52555a"));
 
-    this->setAutoFillBackground(true);
-    this->setPalette(pal);
-    this->show();*/
-    Images();
+    setScene(scene);
+    viewRect = viewport()->rect();
+
+    setPathPoylgone();
+    m_Custommap.AddCitiesFromGeoJSON(&Position, scene);
+    m_Custommap.DrawAerodrome(&Position, scene);
+  //  setPoint(0);// 0 pour les radar
+    setPoint(1);// 1 pour les point strategique
+    setPointculminant();
+    m_Custommap.showAirport(&Position, scene);
+    traitementDossierPeriemetre();
+    show();
 }
 
-void MapImage::Images()
-{
+void MapImage::showOnlyRadar(QString Radar, bool Activate) {
 
-    Position_Aeronef Position;
+    QJsonObject RadarVille = loadFile.loadRadar();
+    QJsonObject radarInfo = RadarVille[Radar].toObject();
+    QString radarPath;
+    QVector3D rectification = math.ConvertStringtoQVector3D(radarInfo["Rectification"].toString());
 
-    ImagePosition(m_showImage_Istre, QPoint(640, 360), CAPTURE_ISTRE(this->Altitude)); // bien verifier cette valeur
-    [this](double* position) { ImagePosition(m_showImage_Istre, QPoint(position[0], position[1]), CAPTURE_ISTRE(this->Altitude));}(Position.GeoToCartosienne("N43°36'32' 'E3°52'58")); // c'est censé etre au millieux
+    if (Activate) {
+        if (!checkedRadars.contains(Radar)) {
+            checkedRadars.insert(Radar, {0, 0});
 
-    [this](double* position) { ImagePosition(m_showImage_Montpellier, QPoint(position[0],position[1]), CAPTURE_MONTPELLIER(this->Altitude)); }(Position.GeoToCartosienne("N43°36'32' 'E3°52'58"));
+            QString positionPath = radarInfo["Image_Path"].toString();
+            radarPath = positionPath + QString::number(altitude) + "ft.png";
 
-    [this](double* position) { ImagePosition(m_showImage_Narbonne, QPoint(position[0],position[1]), CAPTURE_NARBONNE(this->Altitude));} (Position.GeoToCartosienne("N43°11'3.397' 'E3°0'11.081")); // En haut à droite
-    [this](double* position) { ImagePosition(m_showImage_Sainte_baume, QPoint(position[0], position[1]), CAPTURE_SAINT_BAUME(this->Altitude));} (Position.GeoToCartosienne("N43°27'8.989' 'E5°51'50.414")); // En bas à gauche
-    [this](double* position) { ImagePosition(m_showImage_Vitrolles, QPoint(position[0], position[1]), CAPTURE_VITROLLE(this->Altitude));} (Position.GeoToCartosienne("N43°27'30.953' 'E5°14'58.931"));  // En bas à droite
+            if (QFile::exists(radarPath)) {
+                QPixmap radarImage(radarPath);
+                int nouvelleLargeur = radarImage.width() + rectification.z();
+                int nouvelleHauteur = radarImage.height() + rectification.z();
 
-    [this](double* position) {ImagePosition(m_showImage_Ventoux, QPoint(position[0],position[1]), CAPTURE_VENTOUX(this->Altitude));}  (Position.GeoToCartosienne("N44°10'24' 'E5°16'43"));// En haut au centre
-    [this](double* position) { ImagePosition(m_showImage_Salon, QPoint(position[0],position[1]), CAPTURE_SALON(this->Altitude));}  (Position.GeoToCartosienne("N43°38'24.716' 'E5°5'49.279")); // En bas au centre
+                QPixmap imageRedimensionnee = radarImage.scaled(nouvelleLargeur, nouvelleHauteur);
+
+                QGraphicsPixmapItem* pixmapItem = new QGraphicsPixmapItem(imageRedimensionnee);
+                QPointF positionCartesienne = Position.GeoToCartosienne(radarInfo["Position"].toString());
+                pixmapItem->setPos(positionCartesienne + QPointF(rectification.x(), rectification.y()));
+                pixmapItem->setOpacity(0.6); // Mettez l'opacité souhaitée ici
+
+
+                scene->addItem(pixmapItem);
+                radarItems.insert(Radar, pixmapItem);
+            }
+        }
+    } else {
+        checkedRadars.remove(Radar);
+        auto it = radarItems.find(Radar);
+        if (it != radarItems.end()) {
+            scene->removeItem(*it);
+            radarItems.erase(it);
+        }
+    }
 }
 
-void MapImage::ImagePosition(ShowImage *image, const QPoint& position, QString Url)
-{
-    QLabel *redPoint = new QLabel(this);
-    redPoint->setFixedSize(10, 10);
-    redPoint->setAutoFillBackground(true);
-    redPoint->setStyleSheet("background-color: red; border-radius: 5px;");
-    redPoint->move(position);
 
-    QLabel *nameLabel = new QLabel(this);
-    nameLabel->setText(Url.right(38));
-    nameLabel->setAlignment(Qt::AlignHCenter);
-    int nameLabelWidth = nameLabel->fontMetrics().boundingRect(Url.right(10)).width();
-    nameLabel->move(position - QPoint(nameLabelWidth / 2, 20)); // Position au-dessus du point
 
-    // ...
+void MapImage::UpdateRadar(QVector3D positionRadar) {
+    QJsonObject RadarVille = loadFile.loadRadar();
+
+    QString radarPath;
+    QJsonObject radarInfo;
+    QVector3D rectification;
+
+    for (auto it = radarItems.begin(); it != radarItems.end(); ++it) {
+        radarInfo = RadarVille[it.key()].toObject();
+        rectification = math.ConvertStringtoQVector3D(radarInfo["Rectification"].toString()) + positionRadar;
+
+
+        radarPath = radarInfo["Image_Path"].toString() + QString::number(altitude) + "ft.png";
+        loadFile.modifyJsonFile(loadFile.GotoRacineFile() + QDir::separator() + "src"+ QDir::separator() + "RadarPosition.json",it.key(),rectification);
+
+
+        QPixmap radarImage(radarPath);
+        int nouvelleLargeur = radarImage.width() + rectification.z();
+        int nouvelleHauteur = radarImage.height() + rectification.z();
+
+        QPixmap imageRedimensionnee = radarImage.scaled(nouvelleLargeur, nouvelleHauteur);
+
+        QGraphicsPixmapItem* pixmapItem = new QGraphicsPixmapItem(imageRedimensionnee);
+
+        QPointF positionCartesienne = Position.GeoToCartosienne(radarInfo["Position"].toString());
+        pixmapItem->setPos(positionCartesienne + QPointF(rectification.x(), rectification.y()));
+        pixmapItem->setOpacity(0.6); // Mettez l'opacité souhaitée ici
+
+
+        if (scene->items().contains(it.value())) {
+            scene->removeItem(it.value());
+        }
+        scene->addItem(pixmapItem);
+        radarItems.insert(it.key(), pixmapItem);
+    }
 }
 
+void MapImage::setPathPoylgone(){
+    QJsonObject jsonObj = loadFile.LoadJson(loadFile.GotoRacineFile() + QDir::separator() + "Region" + QDir::separator() + "PathRegion.json");
+    QStringList ville = jsonObj.keys();
 
-void MapImage::resizeEvent(QResizeEvent *event)
-{
-    QWidget::resizeEvent(event);
-    Images();
+    for (const QString &ville : ville) {
+        QJsonObject villeObj = jsonObj[ville].toObject();
+        QString path = villeObj["path"].toString();
+        m_Custommap.drawMultiPolygon(*scene, &Position, loadFile.GotoRacineFile() + QDir::separator() + "Region" + QDir::separator() + path);
+        qDebug() << path;
+
+    }
+    qDebug() << loadFile.GotoRacineFile() + QDir::separator() + "Region" + QDir::separator() + "regions.geojson";
+    m_Custommap.drawPolygon(*scene, &Position, loadFile.GotoRacineFile() + QDir::separator() + "Region" + QDir::separator() + "regions.geojson");
+
 }
 
+void MapImage::ShowElementCulminante(bool Activate){
+    if (this->pcActivate != Activate || !this->pcActivate){
+        this->pcActivate = Activate;
 
+        if (Activate == false){
+            for (int i = 0; i < CulminanteList.size(); ++i) {
+                scene->removeItem(CulminanteList.at(i));
+            }
+        }
+        else {
+            setPointculminant();
+        }
+    }
+}
+
+void MapImage::ShowElementStrategique(bool Activate){
+    if (this->StrategiqueActivate != Activate || !this->StrategiqueActivate){
+        this->StrategiqueActivate = Activate;
+
+        if (Activate == false){
+            for (int i = 0; i < StrategiqueList.size(); ++i) {
+                scene->removeItem(StrategiqueList.at(i));
+                qDebug() << "test";
+
+            }
+        }
+        else {
+            setPoint(1);
+        }
+    }
+}
+
+void MapImage::setPoint(int Choose) {
+    QColor color;
+    QJsonObject Point;
+    if (Choose == 0){
+       Point = loadFile.loadRadar();
+        color = Qt::blue;
+
+    }
+    else {
+        Point = loadFile.loadPointStrategique(); // Utilisez un nom de variable différent de "ville" pour éviter la confusion avec la chaîne "ville" dans la boucle for.
+        color = Qt::yellow;
+    }
+    QStringList villes = Point.keys(); // Utilisez un nom de variable différent de "ville" pour éviter la confusion avec la chaîne "ville" dans la boucle for.
+
+    for (const QString& ville : villes) {
+        QJsonObject villeObj = Point[ville].toObject();
+        QString position = villeObj["Position"].toString();
+        double lat = math.convertDMSToDecimal(position.section(' ', 0, 0)); // Latitude
+        double lon = math.convertDMSToDecimal(position.section(' ', 1, 1)); // Longitude
+
+        QPointF positionRadar = Position.GeoDecimalToCartosienne(lat, lon);
+        auto test = scene->addEllipse(QRectF(positionRadar.x() - 2, positionRadar.y() - 2, 4, 4), QPen(Qt::NoPen), QBrush(color)); // Utilisation de Qt::red pour spécifier la couleur de la brosse.
+        StrategiqueList.push_back(test);
+
+    }
+}
+
+void MapImage::setPointculminant(){
+    QJsonObject jsonObj = loadFile.LoadJson(loadFile.GotoRacineFile() + QDir::separator() + "src" + QDir::separator()+ "PositionPointCulminant.json");
+    QStringList ville = jsonObj.keys();
+
+    for (const QString& ville : ville) {
+        QJsonObject villeObj = jsonObj[ville].toObject();
+        QString position = villeObj["Position"].toString();
+        m_Custommap.culuminant_Point(*scene,Position.GeoToCartosienne(position), this->altitude, &CulminanteList);
+    }
+}
+void MapImage::traitementDossierPeriemetre()
+{
+    QString pathByPerimetre;
+
+    // Utilisez la classe QDir pour construire le chemin de manière portable
+    QDir directory(loadFile.GotoRacineFile() + QDir::separator() +"Perimetre");
+
+    qDebug() << directory.path();
+    if (!directory.exists()) {
+        qDebug() << "Le dossier spécifié n'existe pas.";
+        return;
+    }
+
+    QStringList filters;
+    filters << "*.geojson";
+
+    directory.setNameFilters(filters);
+
+    QStringList files = directory.entryList(QDir::Files);
+
+    foreach (const QString &file, files) {
+        pathByPerimetre = directory.filePath(file); // Utilisez filePath() pour obtenir le chemin complet
+        qDebug() << pathByPerimetre;
+        m_Custommap.drawPolygon(*scene, &Position, pathByPerimetre, territoire);
+    }
+}
+
+void MapImage::zoomIn() {
+    scale(1.2, 1.2);
+}
+
+void MapImage::zoomOut() {
+    scale(0.8, 0.8);
+}

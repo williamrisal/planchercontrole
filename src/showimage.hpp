@@ -4,11 +4,9 @@
 #include <QWidget>
 #include <QPixmap>
 #include <QLabel>
-#include "src/CheckPixel.hpp"
 #include <QMainWindow>
 #include <QPixmap>
 #include <QPushButton>
-#include "CheckPixel.hpp"
 #include <QFileDialog>
 #include <sys/signal.h>
 #include <QSlider>
@@ -16,7 +14,7 @@
 #define CAPTURE_SAINT_BAUME(Altitude) ("/Users/williamrisal/Documents/DGA projet/PlancherControle/capture/Radar TRAC2400 Sainte Baume RS/capture_RS_" + QString::number(Altitude) + "ft.png")
 #define CAPTURE_VITROLLE(Altitude) ("/Users/williamrisal/Documents/DGA projet/PlancherControle/capture/Radar TRAC2000 Vitrolles GV/capture_GV_" + QString::number(Altitude) + "ft.png")
 #define CAPTURE_MONTPELLIER(Altitude) ("/Users/williamrisal/Documents/DGA projet/PlancherControle/capture/Radar RMI Montpellier JO/capture_JO_" + QString::number(Altitude) + "ft.png")
-#define CAPTURE_VENTOUX(Altitude) ("/Users/williamrisal/Documents/DGA projet/PlancherControle/capture/Radar RMI Mont Ventoux JX/capture_JX_" + QString::number(Altitude) + "ft.png")
+#define CAPTURE_VENTOUX(Altitude) ("/Users/williamrisal/Documents/DGA projet/PlancherControle/capture/capture_JX_582ft.png")
 #define CAPTURE_SALON(Altitude) ("/Users/williamrisal/Documents/DGA projet/PlancherControle/capture/Radar Centaure Salon DS/capture_DS_" + QString::number(Altitude) + "ft.png")
 #define CAPTURE_NARBONNE(Altitude) ("/Users/williamrisal/Documents/DGA projet/PlancherControle/capture/Radar TRAC2400 Narbonne/capture_RO_" + QString::number(Altitude) + "ft.png")
 

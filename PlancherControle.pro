@@ -10,18 +10,21 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/custommap.cpp \
     src/main.cpp \
     src/mainwindow.cpp \
     src/mapimage.cpp \
     src/mathAero.cpp \
+    src/monitoringfile.cpp \
     src/position_aeronef.cpp \
     src/sidebarpreference.cpp
 
 HEADERS += \
-    src/CheckPixel.hpp \
+    src/custommap.hpp \
     src/mainwindow.h \
     src/mapimage.hpp \
     src/mathAero.hpp \
+    src/monitoringfile.hpp \
     src/position_aeronef.hpp \
     src/showimage.hpp \
     src/sidebarpreference.hpp
@@ -36,7 +39,20 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 DISTFILES += \
-    src/PositionXY.json
+    ../../../../../Downloads/region-provence-alpes-cote-d-azur.geojson \
+    City.geojson \
+    Region/PathRegion.json \
+    Region/region-auvergne-rhone-alpes.geojson \
+    Region/region-bretagne.geojson \
+    Region/region-nouvelle-aquitaine.geojson \
+    Region/region-occitanie.geojson \
+    Region/region-pays-de-la-loire.geojson \
+    Region/region-provence-alpes-cote-d-azur.geojson \
+    Region/regions.geojson \
+    region-provence-alpes-cote-d-azur.geojson \
+    src/PositionPointCulminant.json \
+    src/Position_Strategique.json \
+    src/RadarPosition.json
 
 macx: LIBS += -L$$PWD/GeographicLib-2.2/build/src/ -lGeographicLib
 

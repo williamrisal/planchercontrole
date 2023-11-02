@@ -1,6 +1,7 @@
 #ifndef POSITION_AERONEF_HPP
 #define POSITION_AERONEF_HPP
 
+#include "QtCore/qpoint.h"
 #include "QtCore/qstring.h"
 #include <iostream>
 #include <exception>
@@ -12,8 +13,10 @@ class Position_Aeronef
 {
 public:
     Position_Aeronef();
-    double *GeoToCartosienne(const QString &dmsCoordinate);
-    double *Echelle_MAP(double* position);
+    QPointF GeoToCartosienne(const QString &dmsCoordinate);
+    QPointF GeoDecimalToCartosienne(double lat, double lon);
+    QPointF Echelle_MAP(QPointF position);
+    QPointF CartesienneToGeographieDecimal(QPointF cartesienne);
 };
 
 #endif // POSITION_AERONEF_HPP
