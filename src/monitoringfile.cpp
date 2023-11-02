@@ -76,7 +76,7 @@ void MonitoringFile::modifyJsonFile(const QString &filePath, const QString &Rada
 
 QJsonObject MonitoringFile::loadRadar(){
     QJsonObject jsonObj = LoadJson(GotoRacineFile() + QDir::separator() + "src"+ QDir::separator() + "RadarPosition.json");
-    trouver une solution ici pour que le path soi adapter
+   // trouver une solution ici pour que le path soi adapter
     return (jsonObj);
 
 }

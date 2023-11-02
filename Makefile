@@ -37,10 +37,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = PlancherControle1.0.0
-DISTDIR = /Users/williamrisal/Documents/DGA\ projet/PlancherControle/.tmp/PlancherControle1.0.0
+DISTDIR = /Users/williamrisal/Documents/DGA\ projet/planchercontrole/.tmp/PlancherControle1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -mmacosx-version-min=10.14 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/williamrisal/Qt/6.4.1/macos/lib
-LIBS          = $(SUBLIBS) -F/Users/williamrisal/Qt/6.4.1/macos/lib -L/Users/williamrisal/Documents/DGA\ projet/PlancherControle/GeographicLib-2.2/build/src/ -lGeographicLib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -framework AGL -framework OpenGL   
+LIBS          = $(SUBLIBS) -F/Users/williamrisal/Qt/6.4.1/macos/lib -L/Users/williamrisal/Documents/DGA\ projet/planchercontrole/GeographicLib-2.2/build/src/ -lGeographicLib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -framework AGL -framework OpenGL   
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -60,15 +60,18 @@ SOURCES       = QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBottomSide.
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.cpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/math.cpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/side_panel_helpers.cpp \
+		src/custommap.cpp \
 		src/main.cpp \
 		src/mainwindow.cpp \
 		src/mapimage.cpp \
+		src/monitoringfile.cpp \
 		src/position_aeronef.cpp \
 		src/sidebarpreference.cpp moc_PanelBottomSide.cpp \
 		moc_PanelLeftSide.cpp \
 		moc_PanelRightSide.cpp \
 		moc_PanelTopSide.cpp \
 		moc_SidePanel.cpp \
+		moc_custommap.cpp \
 		moc_mainwindow.cpp \
 		moc_mapimage.cpp \
 		moc_showimage.cpp \
@@ -81,9 +84,11 @@ OBJECTS       = PanelBottomSide.o \
 		SidePanelState.o \
 		math.o \
 		side_panel_helpers.o \
+		custommap.o \
 		main.o \
 		mainwindow.o \
 		mapimage.o \
+		monitoringfile.o \
 		position_aeronef.o \
 		sidebarpreference.o \
 		moc_PanelBottomSide.o \
@@ -91,11 +96,25 @@ OBJECTS       = PanelBottomSide.o \
 		moc_PanelRightSide.o \
 		moc_PanelTopSide.o \
 		moc_SidePanel.o \
+		moc_custommap.o \
 		moc_mainwindow.o \
 		moc_mapimage.o \
 		moc_showimage.o \
 		moc_sidebarpreference.o
-DIST          = src/PositionXY.json \
+DIST          = ../../../../../Downloads/region-provence-alpes-cote-d-azur.geojson \
+		City.geojson \
+		Region/PathRegion.json \
+		Region/region-auvergne-rhone-alpes.geojson \
+		Region/region-bretagne.geojson \
+		Region/region-nouvelle-aquitaine.geojson \
+		Region/region-occitanie.geojson \
+		Region/region-pays-de-la-loire.geojson \
+		Region/region-provence-alpes-cote-d-azur.geojson \
+		Region/regions.geojson \
+		region-provence-alpes-cote-d-azur.geojson \
+		src/PositionPointCulminant.json \
+		src/Position_Strategique.json \
+		src/RadarPosition.json \
 		../../../Qt/6.4.1/macos/mkspecs/features/spec_pre.prf \
 		../../../Qt/6.4.1/macos/mkspecs/features/device_config.prf \
 		../../../Qt/6.4.1/macos/mkspecs/common/unix.conf \
@@ -251,10 +270,11 @@ DIST          = src/PositionXY.json \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/math.hpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/side_panel_helpers.hpp \
-		src/CheckPixel.hpp \
+		src/custommap.hpp \
 		src/mainwindow.h \
 		src/mapimage.hpp \
 		src/mathAero.hpp \
+		src/monitoringfile.hpp \
 		src/position_aeronef.hpp \
 		src/showimage.hpp \
 		src/sidebarpreference.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBottomSide.cpp \
@@ -265,9 +285,11 @@ DIST          = src/PositionXY.json \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.cpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/math.cpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/side_panel_helpers.cpp \
+		src/custommap.cpp \
 		src/main.cpp \
 		src/mainwindow.cpp \
 		src/mapimage.cpp \
+		src/monitoringfile.cpp \
 		src/position_aeronef.cpp \
 		src/sidebarpreference.cpp
 QMAKE_TARGET  = PlancherControle
@@ -278,12 +300,12 @@ TARGET        = PlancherControle.app/Contents/MacOS/PlancherControle
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 13.3
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = /Users/williamrisal/Documents/DGA projet/PlancherControle/.qmake.stash
+EXPORT__QMAKE_STASH_ = /Users/williamrisal/Documents/DGA projet/planchercontrole/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
 EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ARCHS), $(EXPORT_ARCHS), $(EXPORT_VALID_ARCHS)), -arch $(arch))
-EXPORT__PRO_FILE_ = /Users/williamrisal/Documents/DGA projet/PlancherControle/PlancherControle.pro
+EXPORT__PRO_FILE_ = /Users/williamrisal/Documents/DGA projet/planchercontrole/PlancherControle.pro
 
 
 include /Users/williamrisal/Qt/6.4.1/macos/mkspecs/features/mac/sdk.mk
@@ -626,8 +648,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBottomSide.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelLeftSide.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelRightSide.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelTopSide.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/math.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/side_panel_helpers.hpp src/CheckPixel.hpp src/mainwindow.h src/mapimage.hpp src/mathAero.hpp src/position_aeronef.hpp src/showimage.hpp src/sidebarpreference.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBottomSide.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelLeftSide.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelRightSide.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelTopSide.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/math.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/side_panel_helpers.cpp src/main.cpp src/mainwindow.cpp src/mapimage.cpp src/mathAero.cpp src/position_aeronef.cpp src/sidebarpreference.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBottomSide.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelLeftSide.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelRightSide.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelTopSide.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/math.hpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/side_panel_helpers.hpp src/custommap.hpp src/mainwindow.h src/mapimage.hpp src/mathAero.hpp src/monitoringfile.hpp src/position_aeronef.hpp src/showimage.hpp src/sidebarpreference.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBottomSide.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelLeftSide.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelRightSide.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelTopSide.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/math.cpp QSidePanel-Sidebar-master/QSidePanel/QSidePanel/side_panel_helpers.cpp src/custommap.cpp src/main.cpp src/mainwindow.cpp src/mapimage.cpp src/mathAero.cpp src/monitoringfile.cpp src/position_aeronef.cpp src/sidebarpreference.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
 
@@ -657,9 +679,9 @@ benchmark: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_PanelBottomSide.cpp moc_PanelLeftSide.cpp moc_PanelRightSide.cpp moc_PanelTopSide.cpp moc_SidePanel.cpp moc_mainwindow.cpp moc_mapimage.cpp moc_showimage.cpp moc_sidebarpreference.cpp
+compiler_moc_header_make_all: moc_PanelBottomSide.cpp moc_PanelLeftSide.cpp moc_PanelRightSide.cpp moc_PanelTopSide.cpp moc_SidePanel.cpp moc_custommap.cpp moc_mainwindow.cpp moc_mapimage.cpp moc_showimage.cpp moc_sidebarpreference.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_PanelBottomSide.cpp moc_PanelLeftSide.cpp moc_PanelRightSide.cpp moc_PanelTopSide.cpp moc_SidePanel.cpp moc_mainwindow.cpp moc_mapimage.cpp moc_showimage.cpp moc_sidebarpreference.cpp
+	-$(DEL_FILE) moc_PanelBottomSide.cpp moc_PanelLeftSide.cpp moc_PanelRightSide.cpp moc_PanelTopSide.cpp moc_SidePanel.cpp moc_custommap.cpp moc_mainwindow.cpp moc_mapimage.cpp moc_showimage.cpp moc_sidebarpreference.cpp
 moc_PanelBottomSide.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBottomSide.hpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QScrollArea \
@@ -672,7 +694,7 @@ moc_PanelBottomSide.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBo
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		../../../Qt/6.4.1/macos/libexec/moc
-	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/PlancherControle' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBottomSide.hpp -o moc_PanelBottomSide.cpp
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelBottomSide.hpp -o moc_PanelBottomSide.cpp
 
 moc_PanelLeftSide.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelLeftSide.hpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp \
@@ -686,7 +708,7 @@ moc_PanelLeftSide.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelLeft
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		../../../Qt/6.4.1/macos/libexec/moc
-	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/PlancherControle' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelLeftSide.hpp -o moc_PanelLeftSide.cpp
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelLeftSide.hpp -o moc_PanelLeftSide.cpp
 
 moc_PanelRightSide.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelRightSide.hpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp \
@@ -700,7 +722,7 @@ moc_PanelRightSide.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelRig
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		../../../Qt/6.4.1/macos/libexec/moc
-	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/PlancherControle' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelRightSide.hpp -o moc_PanelRightSide.cpp
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelRightSide.hpp -o moc_PanelRightSide.cpp
 
 moc_PanelTopSide.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelTopSide.hpp \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp \
@@ -714,7 +736,7 @@ moc_PanelTopSide.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelTopSi
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		../../../Qt/6.4.1/macos/libexec/moc
-	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/PlancherControle' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelTopSide.hpp -o moc_PanelTopSide.cpp
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/PanelTopSide.hpp -o moc_PanelTopSide.cpp
 
 moc_SidePanel.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QScrollArea \
@@ -727,7 +749,22 @@ moc_SidePanel.cpp: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		../../../Qt/6.4.1/macos/libexec/moc
-	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/PlancherControle' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp -o moc_SidePanel.cpp
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanel.hpp -o moc_SidePanel.cpp
+
+moc_custommap.cpp: src/custommap.hpp \
+		src/monitoringfile.hpp \
+		src/position_aeronef.hpp \
+		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
+		GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
+		GeographicLib-2.2/include/GeographicLib/Constants.hpp \
+		GeographicLib-2.2/include/GeographicLib/Config.h \
+		GeographicLib-2.2/include/GeographicLib/Math.hpp \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../Qt/6.4.1/macos/libexec/moc
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib src/custommap.hpp -o moc_custommap.cpp
 
 moc_mainwindow.cpp: src/mainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -742,20 +779,31 @@ moc_mainwindow.cpp: src/mainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qslider.h \
 		ui_mainwindow.h \
 		src/mapimage.hpp \
-		src/showimage.hpp \
+		src/Custommap.hpp \
+		src/monitoringfile.hpp \
+		src/position_aeronef.hpp \
+		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
+		GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
+		GeographicLib-2.2/include/GeographicLib/Constants.hpp \
+		GeographicLib-2.2/include/GeographicLib/Config.h \
+		GeographicLib-2.2/include/GeographicLib/Math.hpp \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		src/ShowImage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlabel.h \
-		src/CheckPixel.hpp \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QMouseEvent \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qevent.h \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		src/mathAero.hpp \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QPointF \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QMap \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qmap.h \
 		src/sidebarpreference.hpp \
-		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
-		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
@@ -773,23 +821,32 @@ moc_mainwindow.cpp: src/mainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QEasingCurve \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qeasingcurve.h \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QShortcut \
+		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qshortcut.h \
 		../../../Qt/6.4.1/macos/libexec/moc
-	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/PlancherControle' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib src/mainwindow.h -o moc_mainwindow.cpp
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib src/mainwindow.h -o moc_mainwindow.cpp
 
 moc_mapimage.cpp: src/mapimage.hpp \
-		src/showimage.hpp \
+		src/Custommap.hpp \
+		src/monitoringfile.hpp \
+		src/position_aeronef.hpp \
+		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
+		GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
+		GeographicLib-2.2/include/GeographicLib/Constants.hpp \
+		GeographicLib-2.2/include/GeographicLib/Config.h \
+		GeographicLib-2.2/include/GeographicLib/Math.hpp \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		src/ShowImage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlabel.h \
-		src/CheckPixel.hpp \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QMouseEvent \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qevent.h \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QPushButton \
@@ -798,8 +855,15 @@ moc_mapimage.cpp: src/mapimage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QSlider \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qslider.h \
+		src/mathAero.hpp \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QPointF \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QMap \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qmap.h \
 		../../../Qt/6.4.1/macos/libexec/moc
-	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/PlancherControle' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib src/mapimage.hpp -o moc_mapimage.cpp
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib src/mapimage.hpp -o moc_mapimage.cpp
 
 moc_showimage.cpp: src/showimage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QWidget \
@@ -808,12 +872,6 @@ moc_showimage.cpp: src/showimage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlabel.h \
-		src/CheckPixel.hpp \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QMouseEvent \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qevent.h \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QPushButton \
@@ -823,7 +881,7 @@ moc_showimage.cpp: src/showimage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QSlider \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qslider.h \
 		../../../Qt/6.4.1/macos/libexec/moc
-	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/PlancherControle' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib src/showimage.hpp -o moc_showimage.cpp
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib src/showimage.hpp -o moc_showimage.cpp
 
 moc_sidebarpreference.cpp: src/sidebarpreference.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QWidget \
@@ -850,17 +908,8 @@ moc_sidebarpreference.cpp: src/sidebarpreference.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		src/CheckPixel.hpp \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLabel \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlabel.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QMouseEvent \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qevent.h \
 		../../../Qt/6.4.1/macos/libexec/moc
-	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/PlancherControle' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/PlancherControle/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib src/sidebarpreference.hpp -o moc_sidebarpreference.cpp
+	/Users/williamrisal/Qt/6.4.1/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=14 -D__clang_minor__=0 -D__clang_patchlevel__=3 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.4.1/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.4.1/macos/lib/QtCore.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/14.0.3/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.4.1/macos/lib src/sidebarpreference.hpp -o moc_sidebarpreference.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -989,6 +1038,56 @@ side_panel_helpers.o: QSidePanel-Sidebar-master/QSidePanel/QSidePanel/side_panel
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qrect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o side_panel_helpers.o QSidePanel-Sidebar-master/QSidePanel/QSidePanel/side_panel_helpers.cpp
 
+custommap.o: src/custommap.cpp ../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QFile \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qfile.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QPointF \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsPolygonItem \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qdebug.h \
+		src/custommap.hpp \
+		src/monitoringfile.hpp \
+		src/position_aeronef.hpp \
+		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
+		GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
+		GeographicLib-2.2/include/GeographicLib/Constants.hpp \
+		GeographicLib-2.2/include/GeographicLib/Config.h \
+		GeographicLib-2.2/include/GeographicLib/Math.hpp \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
+		src/mapimage.hpp \
+		src/Custommap.hpp \
+		src/ShowImage.hpp \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QPushButton \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QSlider \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qslider.h \
+		src/mathAero.hpp \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QMap \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qmap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o custommap.o src/custommap.cpp
+
 main.o: src/main.cpp src/mainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
@@ -1002,20 +1101,31 @@ main.o: src/main.cpp src/mainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qslider.h \
 		ui_mainwindow.h \
 		src/mapimage.hpp \
-		src/showimage.hpp \
+		src/Custommap.hpp \
+		src/monitoringfile.hpp \
+		src/position_aeronef.hpp \
+		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
+		GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
+		GeographicLib-2.2/include/GeographicLib/Constants.hpp \
+		GeographicLib-2.2/include/GeographicLib/Config.h \
+		GeographicLib-2.2/include/GeographicLib/Math.hpp \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		src/ShowImage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlabel.h \
-		src/CheckPixel.hpp \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QMouseEvent \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qevent.h \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		src/mathAero.hpp \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QPointF \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QMap \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qmap.h \
 		src/sidebarpreference.hpp \
-		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
-		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
@@ -1033,12 +1143,11 @@ main.o: src/main.cpp src/mainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QEasingCurve \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qeasingcurve.h \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
-		src/position_aeronef.hpp \
-		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
-		GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
-		GeographicLib-2.2/include/GeographicLib/Constants.hpp \
-		GeographicLib-2.2/include/GeographicLib/Config.h \
-		GeographicLib-2.2/include/GeographicLib/Math.hpp
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QShortcut \
+		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qshortcut.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QApplication \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
 
 mainwindow.o: src/mainwindow.cpp src/mainwindow.h \
@@ -1054,20 +1163,31 @@ mainwindow.o: src/mainwindow.cpp src/mainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qslider.h \
 		ui_mainwindow.h \
 		src/mapimage.hpp \
-		src/showimage.hpp \
+		src/Custommap.hpp \
+		src/monitoringfile.hpp \
+		src/position_aeronef.hpp \
+		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
+		GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
+		GeographicLib-2.2/include/GeographicLib/Constants.hpp \
+		GeographicLib-2.2/include/GeographicLib/Config.h \
+		GeographicLib-2.2/include/GeographicLib/Math.hpp \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		src/ShowImage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlabel.h \
-		src/CheckPixel.hpp \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QMouseEvent \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qevent.h \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		src/mathAero.hpp \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QPointF \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QMap \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qmap.h \
 		src/sidebarpreference.hpp \
-		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
-		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLineEdit \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
@@ -1084,23 +1204,32 @@ mainwindow.o: src/mainwindow.cpp src/mainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qtimer.h \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QEasingCurve \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qeasingcurve.h \
-		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp
+		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QShortcut \
+		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qshortcut.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o src/mainwindow.cpp
 
 mapimage.o: src/mapimage.cpp src/mapimage.hpp \
-		src/showimage.hpp \
+		src/Custommap.hpp \
+		src/monitoringfile.hpp \
+		src/position_aeronef.hpp \
+		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
+		GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
+		GeographicLib-2.2/include/GeographicLib/Constants.hpp \
+		GeographicLib-2.2/include/GeographicLib/Config.h \
+		GeographicLib-2.2/include/GeographicLib/Math.hpp \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		src/ShowImage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QWidget \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLabel \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlabel.h \
-		src/CheckPixel.hpp \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QMouseEvent \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qevent.h \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QPushButton \
@@ -1109,13 +1238,33 @@ mapimage.o: src/mapimage.cpp src/mapimage.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QSlider \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qslider.h \
-		src/position_aeronef.hpp \
-		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
-		GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
-		GeographicLib-2.2/include/GeographicLib/Constants.hpp \
-		GeographicLib-2.2/include/GeographicLib/Config.h \
-		GeographicLib-2.2/include/GeographicLib/Math.hpp
+		src/mathAero.hpp \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QPointF \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QMap \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qmap.h \
+		src/showimage.hpp \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qjsondocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mapimage.o src/mapimage.cpp
+
+monitoringfile.o: src/monitoringfile.cpp src/monitoringfile.hpp \
+		src/mathAero.hpp \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QFile \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qfile.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QJsonDocument \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qjsondocument.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QJsonObject \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qjsonobject.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QJsonValue \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qjsonvalue.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QJsonArray \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qjsonarray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o monitoringfile.o src/monitoringfile.cpp
 
 position_aeronef.o: src/position_aeronef.cpp src/position_aeronef.hpp \
 		GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
@@ -1128,7 +1277,11 @@ position_aeronef.o: src/position_aeronef.cpp src/position_aeronef.hpp \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QRegularExpression \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qregularexpression.h \
 		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QStringList \
-		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qstringlist.h
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QPointF \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/QString \
+		../../../Qt/6.4.1/macos/lib/QtCore.framework/Headers/qstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o position_aeronef.o src/position_aeronef.cpp
 
 sidebarpreference.o: src/sidebarpreference.cpp src/sidebarpreference.hpp \
@@ -1156,15 +1309,11 @@ sidebarpreference.o: src/sidebarpreference.cpp src/sidebarpreference.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		src/CheckPixel.hpp \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QLabel \
-		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qlabel.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/QMouseEvent \
-		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qevent.h
+		../../../Qt/6.4.1/macos/lib/QtGui.framework/Headers/qpainter.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QCheckBox \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qcheckbox.h \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/QSplitter \
+		../../../Qt/6.4.1/macos/lib/QtWidgets.framework/Headers/qsplitter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sidebarpreference.o src/sidebarpreference.cpp
 
 moc_PanelBottomSide.o: moc_PanelBottomSide.cpp 
@@ -1181,6 +1330,9 @@ moc_PanelTopSide.o: moc_PanelTopSide.cpp
 
 moc_SidePanel.o: moc_SidePanel.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_SidePanel.o moc_SidePanel.cpp
+
+moc_custommap.o: moc_custommap.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_custommap.o moc_custommap.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
