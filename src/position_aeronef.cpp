@@ -1,6 +1,7 @@
 #include "position_aeronef.hpp"
 #include <GeographicLib/Geocentric.hpp>
 #include <GeographicLib/LocalCartesian.hpp>
+#include <exception>
 #include <iostream>
 #include "QtCore/qrect.h"
 #include "mathAero.cpp"

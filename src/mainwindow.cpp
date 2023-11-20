@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(sidebar, &SideBarPreference::checkBoxRadarStateChanged, map, &MapImage::showOnlyRadar);
     connect(sidebar, &SideBarPreference::checkBoxStateChangedCulminante, map, &MapImage::ShowElementCulminante);
     connect(sidebar, &SideBarPreference::checkBoxStateChangedStrategique, map, &MapImage::ShowElementStrategique);
+    connect(sidebar, &SideBarPreference::CheckBoxesForPeriemetre, map, &MapImage::ShowElementPeriemetre);
 
     //position image (admin)
     connect(sidebar, &SideBarPreference::buttonClickedSignal, map, &MapImage::moveImage);

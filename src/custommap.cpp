@@ -32,12 +32,9 @@ void Custommap::drawMultiPolygon(QGraphicsScene& scene, Position_Aeronef* positi
         qDebug() << "Erreur lors de l'analyse du GeoJSON";
         return;
     }
-
-    // Obtenir l'objet JSON racine
     QJsonObject jsonObj = jsonDoc.object();
 
     if (jsonObj.contains("type") && jsonObj["type"].toString() == "Feature") {
-        // Obtenir l'objet "geometry"
         QJsonObject geometryObj = jsonObj["geometry"].toObject();
 
             QJsonArray coordinatesArray = geometryObj["coordinates"].toArray();
@@ -45,27 +42,22 @@ void Custommap::drawMultiPolygon(QGraphicsScene& scene, Position_Aeronef* positi
             for (const QJsonValue& polygonValue : coordinatesArray) {
                 QJsonArray polygon = polygonValue.toArray();
 
-                // Créez un vecteur pour stocker les coordonnées du polygone
                 QVector<QPointF> polygonPoints;
-                // Parcourez les anneaux du polygone
                 for (const QJsonValue& ringValue : polygon) {
                     QJsonArray ring = ringValue.toArray();
 
-                    // Parcourez les points du polygone
                     for (const QJsonValue& pointValue : ring) {
                         QJsonArray point = pointValue.toArray();
 
-                        // Extraire les coordonnées individuelles
                         double lon = point[0].toDouble();
                         double lat = point[1].toDouble();
 
-                        // Utilisez position pour convertir les coordonnées géographiques en coordonnées de scène
                         QPointF scenePoint = position->GeoDecimalToCartosienne(lat, lon);
 
                         polygonPoints.append(scenePoint);
                     }
 
-                    QGraphicsPolygonItem* polygonItem = scene.addPolygon(QPolygonF(polygonPoints), QPen(Qt::blue), QBrush(Qt::gray));
+                    scene.addPolygon(QPolygonF(polygonPoints), QPen(Qt::blue), QBrush(Qt::gray));
                     polygonPoints.clear();
                 }
             }
@@ -73,15 +65,15 @@ void Custommap::drawMultiPolygon(QGraphicsScene& scene, Position_Aeronef* positi
     }
 }
 
-void Custommap::drawPolygon(QGraphicsScene& scene, Position_Aeronef* position, const QString& geojsonFilePath, bool type) {
-    // Ouvrir le fichier GeoJSON en lecture
+QGraphicsPolygonItem * Custommap::drawPolygon(QGraphicsScene& scene, Position_Aeronef* position, const QString& geojsonFilePath, bool type) {
     QFile geojsonFile(geojsonFilePath);
     QBrush ColorBackground;
     QPen ColorPen;
+    QGraphicsPolygonItem *polygonItem;
 
     if (!geojsonFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "Erreur lors de l'ouverture du fichier GeoJSON";
-        return;
+            exit(1);
     }
 
     if (type == territoire){
@@ -103,7 +95,7 @@ void Custommap::drawPolygon(QGraphicsScene& scene, Position_Aeronef* position, c
     // Vérifier si l'analyse a réussi
     if (!jsonDoc.isObject()) {
         qDebug() << "Erreur lors de l'analyse du GeoJSON";
-        return;
+        exit(1);
     }
 
     // Obtenir l'objet JSON racine
@@ -134,11 +126,13 @@ void Custommap::drawPolygon(QGraphicsScene& scene, Position_Aeronef* position, c
                         polygonPoints.append(scenePoint);
                     }
 
-                    QGraphicsPolygonItem* polygonItem = scene.addPolygon(QPolygonF(polygonPoints), ColorPen, ColorBackground);
+                    polygonItem = scene.addPolygon(QPolygonF(polygonPoints), ColorPen, ColorBackground);
                 }
             }
         }
     }
+    return polygonItem;
+
 }
 
 
@@ -275,16 +269,15 @@ void Custommap::showAirport(Position_Aeronef* position,QGraphicsScene *scene){
             QString firstValue = parts.first();
 
             if (firstValue == "10" && parts.size() >= 3 && parts.last()  == "1") {
-                // Ligne contenant des coordonnées d'aéroport
                 if (previousLine.contains("LF")) {
 
-                    bool ok; // Un booléen pour vérifier la conversion
+                    bool ok;
                     double latitude = parts[1].toDouble(&ok);
                     double longitude = parts[2].toDouble(&ok);
                     QPointF positionCartesienne = position->GeoDecimalToCartosienne(latitude, longitude);
 
-                    QGraphicsEllipseItem *point = new QGraphicsEllipseItem(0, 0, 5, 5); // Créez un point de 5x5 pixels
-                    point->setPos(positionCartesienne.x(), positionCartesienne.y()); // Définissez la position du point sur la scène (50, 50)
+                    QGraphicsEllipseItem *point = new QGraphicsEllipseItem(0, 0, 5, 5);
+                    point->setPos(positionCartesienne.x(), positionCartesienne.y());
                     scene->addItem(point);
 
                    }

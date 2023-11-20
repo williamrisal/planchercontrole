@@ -87,10 +87,8 @@ QJsonObject MonitoringFile::loadPointStrategique(){
 }
 
 QString MonitoringFile::GotoRacineFile(){
-    // Utilisez la classe QDir pour construire le chemin de manière portable
     QDir directory(QDir::currentPath());
 
-    // Remontez d'un certain nombre de niveaux
     directory.cdUp(); // Remonte au répertoire parent
     directory.cdUp(); // Remonte au répertoire parent
     directory.cdUp(); // Remonte au répertoire parent

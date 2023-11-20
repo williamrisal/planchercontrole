@@ -22,7 +22,7 @@ feature = geojson.Feature(geometry=polygon, properties={})
 
 feature_collection = geojson.FeatureCollection([feature])
 
-with open('polygone_paca.geojson', 'w') as f:
+with open('polygone_paca_test.geojson', 'w') as f:
     geojson.dump(feature_collection, f)
 
 print("Fichier GeoJSON créé : polygone_paca.geojson")

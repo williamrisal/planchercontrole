@@ -4,26 +4,29 @@
 #include "QtWidgets/qpushbutton.h"
 #include <qpainter.h>
 #include "QCheckBox"
+
 #include <QSplitter>
 
 
 SideBarPreference::SideBarPreference(QWidget *parent)
 {
-    PanelRightSide* panelRight = new PanelRightSide(this);
     panelRight->setOpenEasingCurve(QEasingCurve::Type::OutExpo);
     panelRight->setCloseEasingCurve(QEasingCurve::Type::InExpo);
-    panelRight->setPanelSize(260);
+    panelRight->setPanelSize(280);
     panelRight->init();
 
     QVBoxLayout* rightLayout = new QVBoxLayout;
     QVBoxLayout* leftLayout = new QVBoxLayout;
 
     // Créez le widget "Points culminants"
-    QWidget* pointCulminanteWidget = new QWidget(this);
-    QVBoxLayout* pointCulminanteLayout = new QVBoxLayout;
-    pointCulminanteLayout->addLayout(DisablePointCulminante());
-    pointCulminanteLayout->addLayout(ButtonStrategiquePoint());
-    pointCulminanteWidget->setLayout(pointCulminanteLayout);
+    QWidget* CheckBoxOptionWidget = new QWidget(this);
+    QVBoxLayout* CheckBoxOptionLayout = new QVBoxLayout;
+    CheckBoxOptionLayout->addLayout(DisablePointCulminante());
+    CheckBoxOptionLayout->addLayout(ButtonStrategiquePoint());
+    CheckBoxOptionLayout->addLayout(CheckBoxesForPolygones());
+    CheckBoxOptionWidget->setLayout(CheckBoxOptionLayout);
+    CheckBoxOptionWidget->setStyleSheet("border: 1px solid #000; padding: 10px; border-radius: 5px;");
+
 
     // Créez le widget "Choix radar"
     QWidget* chooseRadarWidget = new QWidget(this);
@@ -33,8 +36,7 @@ SideBarPreference::SideBarPreference(QWidget *parent)
     chooseRadarWidget->setLayout(chooseRadarLayout);
 
 
-
-    rightLayout->addWidget(pointCulminanteWidget); // Ajoutez les "Points culminants"
+    rightLayout->addWidget(CheckBoxOptionWidget); // Ajoutez les "Points culminants"
     rightLayout->addWidget(chooseRadarWidget); // Ajoutez le "Choix radar"
     rightLayout->addLayout(ButtonAdmin()); // Ajoutez le reste
 
@@ -207,7 +209,7 @@ QVBoxLayout* SideBarPreference::ButtonChooseRadar()
 
 QVBoxLayout* SideBarPreference::DisablePointCulminante(){
     QVBoxLayout* layout = new QVBoxLayout;
-    QCheckBox *CheckBoxPC = new QCheckBox("Disable Point Culminante");
+    QCheckBox *CheckBoxPC = new QCheckBox("Point Culminante");
     CheckBoxPC->setChecked(true);
 
     layout->addWidget(CheckBoxPC);
@@ -239,7 +241,7 @@ QVBoxLayout* SideBarPreference::ButtonAdmin() {
 QVBoxLayout* SideBarPreference::ButtonStrategiquePoint() {
 
     QVBoxLayout* layout = new QVBoxLayout;
-    QCheckBox *CheckBoxPC = new QCheckBox("Disable Strategique Point");
+    QCheckBox *CheckBoxPC = new QCheckBox("Strategique Point");
     CheckBoxPC->setChecked(true);
 
     layout->addWidget(CheckBoxPC);
@@ -253,20 +255,25 @@ QVBoxLayout* SideBarPreference::ButtonStrategiquePoint() {
 
 
 
-QVBoxLayout* SideBarPreference::ButtonPerimetre() {
+QVBoxLayout* SideBarPreference::CheckBoxesForPolygones() {
+    QVBoxLayout* layout = new QVBoxLayout();
+    int a = 0;
+    for (const auto& polygone : map.PolygoneList) {
+        QString checkBoxText = QString::fromStdString("Polygone ") + QString::number(a);
 
-    QStringList buttonLabels = { "Perimetre A", "Perimetre B", "Perimetre C", "Perimetre D", "Perimetre E", "Perimetre F" };
+        QCheckBox* checkBox = new QCheckBox(checkBoxText);
+        checkBox->setChecked(true);
+        layout->addWidget(checkBox);
 
-    for (int i = 0; i < buttonLabels.size(); ++i) {
-        QPushButton* button = new QPushButton(buttonLabels[i], this);
-        button->hide();
-        Adminlayout->addWidget(button);
-        buttonsadmin.append(button);
-
-        connect(button, &QPushButton::clicked, this, [ i, this]() {
-            emit buttonClickedSignal(i);
+        connect(checkBox, &QCheckBox::stateChanged, [this, a](int state) {
+            emit CheckBoxesForPeriemetre(state, a);
         });
+        a++;
     }
 
-    return Adminlayout;
+    return layout;
 }
+
+
+
+

@@ -39,8 +39,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 DISTFILES += \
-    ../../../../../Downloads/region-provence-alpes-cote-d-azur.geojson \
     City.geojson \
+    Perimetre/carre_paca.geojson \
+    Perimetre/main.py \
+    Perimetre/polygone_paca.geojson \
     Region/PathRegion.json \
     Region/region-auvergne-rhone-alpes.geojson \
     Region/region-bretagne.geojson \

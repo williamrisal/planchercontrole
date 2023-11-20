@@ -1,19 +1,28 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mapimage.hpp'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.4.1)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.6.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../src/mapimage.hpp"
 #include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
+
+#if __has_include(<QtCore/qtmochelpers.h>)
+#include <QtCore/qtmochelpers.h>
+#else
+QT_BEGIN_MOC_NAMESPACE
+#endif
+
+
+#include <memory>
+
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mapimage.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.4.1. It"
+#error "This file was generated using the moc from 6.6.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,11 +31,31 @@
 #define Q_CONSTINIT
 #endif
 
-QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
+QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_stringdata_MapImage_t {
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSMapImageENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSMapImageENDCLASS = QtMocHelpers::stringData(
+    "MapImage",
+    "showOnlyRadar",
+    "",
+    "Radar",
+    "Activate",
+    "ShowElementCulminante",
+    "ShowElementStrategique",
+    "keyPressEvent",
+    "QKeyEvent*",
+    "event",
+    "setaltitude",
+    "value",
+    "moveImage",
+    "i"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSMapImageENDCLASS_t {
     uint offsetsAndSizes[28];
     char stringdata0[9];
     char stringdata1[14];
@@ -44,8 +73,8 @@ struct qt_meta_stringdata_MapImage_t {
     char stringdata13[2];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_MapImage_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_MapImage_t qt_meta_stringdata_MapImage = {
+    uint(sizeof(qt_meta_stringdata_CLASSMapImageENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSMapImageENDCLASS_t qt_meta_stringdata_CLASSMapImageENDCLASS = {
     {
         QT_MOC_LITERAL(0, 8),  // "MapImage"
         QT_MOC_LITERAL(9, 13),  // "showOnlyRadar"
@@ -78,12 +107,13 @@ Q_CONSTINIT static const qt_meta_stringdata_MapImage_t qt_meta_stringdata_MapIma
     "i"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_MapImage[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSMapImageENDCLASS[] = {
 
  // content:
-      10,       // revision
+      12,       // revision
        0,       // classname
        0,    0, // classinfo
        6,   14, // methods
@@ -114,11 +144,11 @@ Q_CONSTINIT static const uint qt_meta_data_MapImage[] = {
 
 Q_CONSTINIT const QMetaObject MapImage::staticMetaObject = { {
     QMetaObject::SuperData::link<QGraphicsView::staticMetaObject>(),
-    qt_meta_stringdata_MapImage.offsetsAndSizes,
-    qt_meta_data_MapImage,
+    qt_meta_stringdata_CLASSMapImageENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSMapImageENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_MapImage_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSMapImageENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<MapImage, std::true_type>,
         // method 'showOnlyRadar'
@@ -169,7 +199,7 @@ const QMetaObject *MapImage::metaObject() const
 void *MapImage::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_MapImage.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSMapImageENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QGraphicsView::qt_metacast(_clname);
 }
@@ -191,4 +221,3 @@ int MapImage::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     return _id;
 }
 QT_WARNING_POP
-QT_END_MOC_NAMESPACE

@@ -39,10 +39,13 @@ void MapImage::showOnlyRadar(QString Radar, bool Activate) {
         if (!checkedRadars.contains(Radar)) {
             checkedRadars.insert(Radar, {0, 0});
 
-            QString positionPath = radarInfo["Image_Path"].toString();
+            QString positionPath = loadFile.GotoRacineFile() + QDir::separator() + "capture"+ QDir::separator() + radarInfo["Image_Path"].toString();
+
             radarPath = positionPath + QString::number(altitude) + "ft.png";
+            qDebug() << radarPath;
 
             if (QFile::exists(radarPath)) {
+
                 QPixmap radarImage(radarPath);
                 int nouvelleLargeur = radarImage.width() + rectification.z();
                 int nouvelleHauteur = radarImage.height() + rectification.z();
@@ -77,15 +80,15 @@ void MapImage::UpdateRadar(QVector3D positionRadar) {
     QString radarPath;
     QJsonObject radarInfo;
     QVector3D rectification;
+    QString positionPath = loadFile.GotoRacineFile() + QDir::separator() + "capture"+ QDir::separator() + radarInfo["Image_Path"].toString();
 
     for (auto it = radarItems.begin(); it != radarItems.end(); ++it) {
         radarInfo = RadarVille[it.key()].toObject();
         rectification = math.ConvertStringtoQVector3D(radarInfo["Rectification"].toString()) + positionRadar;
 
 
-        radarPath = radarInfo["Image_Path"].toString() + QString::number(altitude) + "ft.png";
+        radarPath = positionPath + radarInfo["Image_Path"].toString() + QString::number(altitude) + "ft.png";
         loadFile.modifyJsonFile(loadFile.GotoRacineFile() + QDir::separator() + "src"+ QDir::separator() + "RadarPosition.json",it.key(),rectification);
-
 
         QPixmap radarImage(radarPath);
         int nouvelleLargeur = radarImage.width() + rectification.z();
@@ -97,12 +100,14 @@ void MapImage::UpdateRadar(QVector3D positionRadar) {
 
         QPointF positionCartesienne = Position.GeoToCartosienne(radarInfo["Position"].toString());
         pixmapItem->setPos(positionCartesienne + QPointF(rectification.x(), rectification.y()));
-        pixmapItem->setOpacity(0.6); // Mettez l'opacité souhaitée ici
+        pixmapItem->setOpacity(0.6);
 
 
         if (scene->items().contains(it.value())) {
             scene->removeItem(it.value());
         }
+        qDebug() << "test";
+
         scene->addItem(pixmapItem);
         radarItems.insert(it.key(), pixmapItem);
     }
@@ -146,7 +151,6 @@ void MapImage::ShowElementStrategique(bool Activate){
         if (Activate == false){
             for (int i = 0; i < StrategiqueList.size(); ++i) {
                 scene->removeItem(StrategiqueList.at(i));
-                qDebug() << "test";
 
             }
         }
@@ -165,10 +169,10 @@ void MapImage::setPoint(int Choose) {
 
     }
     else {
-        Point = loadFile.loadPointStrategique(); // Utilisez un nom de variable différent de "ville" pour éviter la confusion avec la chaîne "ville" dans la boucle for.
+        Point = loadFile.loadPointStrategique();
         color = Qt::yellow;
     }
-    QStringList villes = Point.keys(); // Utilisez un nom de variable différent de "ville" pour éviter la confusion avec la chaîne "ville" dans la boucle for.
+    QStringList villes = Point.keys();
 
     for (const QString& ville : villes) {
         QJsonObject villeObj = Point[ville].toObject();
@@ -196,8 +200,7 @@ void MapImage::setPointculminant(){
 void MapImage::traitementDossierPeriemetre()
 {
     QString pathByPerimetre;
-
-    // Utilisez la classe QDir pour construire le chemin de manière portable
+    QGraphicsPolygonItem *tmpPerimetre;
     QDir directory(loadFile.GotoRacineFile() + QDir::separator() +"Perimetre");
 
     qDebug() << directory.path();
@@ -214,12 +217,25 @@ void MapImage::traitementDossierPeriemetre()
     QStringList files = directory.entryList(QDir::Files);
 
     foreach (const QString &file, files) {
-        pathByPerimetre = directory.filePath(file); // Utilisez filePath() pour obtenir le chemin complet
+        pathByPerimetre = directory.filePath(file);
         qDebug() << pathByPerimetre;
-        m_Custommap.drawPolygon(*scene, &Position, pathByPerimetre, territoire);
+        tmpPerimetre = m_Custommap.drawPolygon(*scene, &Position, pathByPerimetre, territoire);
+        PolygoneList.append(tmpPerimetre);
     }
 }
 
+void MapImage::ShowElementPeriemetre(bool Activate, int a){
+    if (this->pcActivate != Activate || !this->pcActivate){
+        this->pcActivate = Activate;
+
+        if (Activate == false){
+            scene->removeItem(PolygoneList.at(a));
+        }
+        else {
+            scene->addItem(PolygoneList.at(a));
+        }
+    }
+}
 void MapImage::zoomIn() {
     scale(1.2, 1.2);
 }

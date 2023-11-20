@@ -1,23 +1,23 @@
 {
     "PointA": {
-        "Position": "N43°31'26' E04°55'33'"
+        "Position": "N44°31'26' E04°55'33'"
     },
     "PointB": {
-        "Position": "N43°36'11' E05°06'29'"
+        "Position": "N44°36'11' E05°06'29'"
     },
     "PointC": {
-        "Position": "N43°28'10' E05°14'43'"
+        "Position": "N44°28'10' E05°14'43'"
     },
     "PointD": {
-        "Position": "N43°47'12' E03°14'44'"
+        "Position": "N44°47'12' E03°14'44'"
     },
     "PointE": {
-        "Position": "N44°10'27' E05°16'06'"
+        "Position": "N43°10'27' E05°16'06'"
     },
     "PointF": {
-        "Position": "N43°10'28' E03°07'18'"
+        "Position": "N44°10'28' E03°07'18'"
     },
     "PointG": {
-        "Position": "N43°18'42' E05°41'21'"
+        "Position": "N44°18'42' E05°41'21'"
     }
 }

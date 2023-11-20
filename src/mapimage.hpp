@@ -43,6 +43,9 @@ public:
     QPointF positionRadar;
     void setPoint(int Choose);
     void traitementDossierPeriemetre();
+    QList<QGraphicsItem*> PolygoneList;
+    void ShowElementPeriemetre(bool Activate, int a);
+
 
 
 public slots:
@@ -65,7 +68,9 @@ public slots:
             this->UpdateRadar();
             if (pcActivate){
                 for (int i = 0; i < CulminanteList.size(); ++i) {
-                    scene->removeItem(CulminanteList.at(i));
+                    if (CulminanteList.at(i)){
+                        scene->removeItem(CulminanteList.at(i));
+                    }
                 }
                 setPointculminant();
             }

@@ -1,19 +1,28 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'sidebarpreference.hpp'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.4.1)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.6.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../src/sidebarpreference.hpp"
 #include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
+
+#if __has_include(<QtCore/qtmochelpers.h>)
+#include <QtCore/qtmochelpers.h>
+#else
+QT_BEGIN_MOC_NAMESPACE
+#endif
+
+
+#include <memory>
+
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'sidebarpreference.hpp' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.4.1. It"
+#error "This file was generated using the moc from 6.6.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,12 +31,36 @@
 #define Q_CONSTINIT
 #endif
 
-QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
+QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_stringdata_SideBarPreference_t {
-    uint offsetsAndSizes[32];
+
+#ifdef QT_MOC_HAS_STRINGDATA
+struct qt_meta_stringdata_CLASSSideBarPreferenceENDCLASS_t {};
+static constexpr auto qt_meta_stringdata_CLASSSideBarPreferenceENDCLASS = QtMocHelpers::stringData(
+    "SideBarPreference",
+    "checkBoxRadarStateChanged",
+    "",
+    "checkBoxText",
+    "state",
+    "checkBoxStateChangedCulminante",
+    "checkBoxStateChangedStrategique",
+    "CheckBoxesForPeriemetre",
+    "a",
+    "sliderValueChanged",
+    "value",
+    "radarChanged",
+    "radar",
+    "isChecked",
+    "buttonClickedSignal",
+    "i",
+    "combinaisonCtrlMActivated",
+    "buttonActive"
+);
+#else  // !QT_MOC_HAS_STRING_DATA
+struct qt_meta_stringdata_CLASSSideBarPreferenceENDCLASS_t {
+    uint offsetsAndSizes[36];
     char stringdata0[18];
     char stringdata1[26];
     char stringdata2[1];
@@ -35,19 +68,21 @@ struct qt_meta_stringdata_SideBarPreference_t {
     char stringdata4[6];
     char stringdata5[31];
     char stringdata6[32];
-    char stringdata7[19];
-    char stringdata8[6];
-    char stringdata9[13];
+    char stringdata7[24];
+    char stringdata8[2];
+    char stringdata9[19];
     char stringdata10[6];
-    char stringdata11[10];
-    char stringdata12[20];
-    char stringdata13[2];
-    char stringdata14[26];
-    char stringdata15[13];
+    char stringdata11[13];
+    char stringdata12[6];
+    char stringdata13[10];
+    char stringdata14[20];
+    char stringdata15[2];
+    char stringdata16[26];
+    char stringdata17[13];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_SideBarPreference_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_SideBarPreference_t qt_meta_stringdata_SideBarPreference = {
+    uint(sizeof(qt_meta_stringdata_CLASSSideBarPreferenceENDCLASS_t::offsetsAndSizes) + ofs), len 
+Q_CONSTINIT static const qt_meta_stringdata_CLASSSideBarPreferenceENDCLASS_t qt_meta_stringdata_CLASSSideBarPreferenceENDCLASS = {
     {
         QT_MOC_LITERAL(0, 17),  // "SideBarPreference"
         QT_MOC_LITERAL(18, 25),  // "checkBoxRadarStateChanged"
@@ -56,15 +91,17 @@ Q_CONSTINIT static const qt_meta_stringdata_SideBarPreference_t qt_meta_stringda
         QT_MOC_LITERAL(58, 5),  // "state"
         QT_MOC_LITERAL(64, 30),  // "checkBoxStateChangedCulminante"
         QT_MOC_LITERAL(95, 31),  // "checkBoxStateChangedStrategique"
-        QT_MOC_LITERAL(127, 18),  // "sliderValueChanged"
-        QT_MOC_LITERAL(146, 5),  // "value"
-        QT_MOC_LITERAL(152, 12),  // "radarChanged"
-        QT_MOC_LITERAL(165, 5),  // "radar"
-        QT_MOC_LITERAL(171, 9),  // "isChecked"
-        QT_MOC_LITERAL(181, 19),  // "buttonClickedSignal"
-        QT_MOC_LITERAL(201, 1),  // "i"
-        QT_MOC_LITERAL(203, 25),  // "combinaisonCtrlMActivated"
-        QT_MOC_LITERAL(229, 12)   // "buttonActive"
+        QT_MOC_LITERAL(127, 23),  // "CheckBoxesForPeriemetre"
+        QT_MOC_LITERAL(151, 1),  // "a"
+        QT_MOC_LITERAL(153, 18),  // "sliderValueChanged"
+        QT_MOC_LITERAL(172, 5),  // "value"
+        QT_MOC_LITERAL(178, 12),  // "radarChanged"
+        QT_MOC_LITERAL(191, 5),  // "radar"
+        QT_MOC_LITERAL(197, 9),  // "isChecked"
+        QT_MOC_LITERAL(207, 19),  // "buttonClickedSignal"
+        QT_MOC_LITERAL(227, 1),  // "i"
+        QT_MOC_LITERAL(229, 25),  // "combinaisonCtrlMActivated"
+        QT_MOC_LITERAL(255, 12)   // "buttonActive"
     },
     "SideBarPreference",
     "checkBoxRadarStateChanged",
@@ -73,6 +110,8 @@ Q_CONSTINIT static const qt_meta_stringdata_SideBarPreference_t qt_meta_stringda
     "state",
     "checkBoxStateChangedCulminante",
     "checkBoxStateChangedStrategique",
+    "CheckBoxesForPeriemetre",
+    "a",
     "sliderValueChanged",
     "value",
     "radarChanged",
@@ -84,40 +123,43 @@ Q_CONSTINIT static const qt_meta_stringdata_SideBarPreference_t qt_meta_stringda
     "buttonActive"
 };
 #undef QT_MOC_LITERAL
+#endif // !QT_MOC_HAS_STRING_DATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_SideBarPreference[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSSideBarPreferenceENDCLASS[] = {
 
  // content:
-      10,       // revision
+      12,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       7,       // signalCount
+       8,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    2,   62,    2, 0x06,    1 /* Public */,
-       5,    1,   67,    2, 0x06,    4 /* Public */,
-       6,    1,   70,    2, 0x06,    6 /* Public */,
-       7,    1,   73,    2, 0x06,    8 /* Public */,
-       9,    2,   76,    2, 0x06,   10 /* Public */,
-      12,    1,   81,    2, 0x06,   13 /* Public */,
-      14,    0,   84,    2, 0x06,   15 /* Public */,
+       1,    2,   68,    2, 0x06,    1 /* Public */,
+       5,    1,   73,    2, 0x06,    4 /* Public */,
+       6,    1,   76,    2, 0x06,    6 /* Public */,
+       7,    2,   79,    2, 0x06,    8 /* Public */,
+       9,    1,   84,    2, 0x06,   11 /* Public */,
+      11,    2,   87,    2, 0x06,   13 /* Public */,
+      14,    1,   92,    2, 0x06,   16 /* Public */,
+      16,    0,   95,    2, 0x06,   18 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      15,    0,   85,    2, 0x0a,   16 /* Public */,
+      17,    0,   96,    2, 0x0a,   19 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::Int,    3,    4,
     QMetaType::Void, QMetaType::Int,    4,
     QMetaType::Void, QMetaType::Int,    4,
-    QMetaType::Void, QMetaType::Int,    8,
-    QMetaType::Void, QMetaType::QString, QMetaType::Bool,   10,   11,
-    QMetaType::Void, QMetaType::Int,   13,
+    QMetaType::Void, QMetaType::Bool, QMetaType::Int,    4,    8,
+    QMetaType::Void, QMetaType::Int,   10,
+    QMetaType::Void, QMetaType::QString, QMetaType::Bool,   12,   13,
+    QMetaType::Void, QMetaType::Int,   15,
     QMetaType::Void,
 
  // slots: parameters
@@ -128,11 +170,11 @@ Q_CONSTINIT static const uint qt_meta_data_SideBarPreference[] = {
 
 Q_CONSTINIT const QMetaObject SideBarPreference::staticMetaObject = { {
     QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_meta_stringdata_SideBarPreference.offsetsAndSizes,
-    qt_meta_data_SideBarPreference,
+    qt_meta_stringdata_CLASSSideBarPreferenceENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSSideBarPreferenceENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_SideBarPreference_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSSideBarPreferenceENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<SideBarPreference, std::true_type>,
         // method 'checkBoxRadarStateChanged'
@@ -144,6 +186,10 @@ Q_CONSTINIT const QMetaObject SideBarPreference::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'checkBoxStateChangedStrategique'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'CheckBoxesForPeriemetre'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'sliderValueChanged'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -172,11 +218,12 @@ void SideBarPreference::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 0: _t->checkBoxRadarStateChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
         case 1: _t->checkBoxStateChangedCulminante((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 2: _t->checkBoxStateChangedStrategique((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 3: _t->sliderValueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 4: _t->radarChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[2]))); break;
-        case 5: _t->buttonClickedSignal((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 6: _t->combinaisonCtrlMActivated(); break;
-        case 7: _t->buttonActive(); break;
+        case 3: _t->CheckBoxesForPeriemetre((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 4: _t->sliderValueChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 5: _t->radarChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[2]))); break;
+        case 6: _t->buttonClickedSignal((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 7: _t->combinaisonCtrlMActivated(); break;
+        case 8: _t->buttonActive(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -203,30 +250,37 @@ void SideBarPreference::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
             }
         }
         {
+            using _t = void (SideBarPreference::*)(bool , int );
+            if (_t _q_method = &SideBarPreference::CheckBoxesForPeriemetre; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 3;
+                return;
+            }
+        }
+        {
             using _t = void (SideBarPreference::*)(int );
             if (_t _q_method = &SideBarPreference::sliderValueChanged; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
-                *result = 3;
+                *result = 4;
                 return;
             }
         }
         {
             using _t = void (SideBarPreference::*)(const QString & , bool );
             if (_t _q_method = &SideBarPreference::radarChanged; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
-                *result = 4;
+                *result = 5;
                 return;
             }
         }
         {
             using _t = void (SideBarPreference::*)(int );
             if (_t _q_method = &SideBarPreference::buttonClickedSignal; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
-                *result = 5;
+                *result = 6;
                 return;
             }
         }
         {
             using _t = void (SideBarPreference::*)();
             if (_t _q_method = &SideBarPreference::combinaisonCtrlMActivated; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
-                *result = 6;
+                *result = 7;
                 return;
             }
         }
@@ -241,7 +295,7 @@ const QMetaObject *SideBarPreference::metaObject() const
 void *SideBarPreference::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_SideBarPreference.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSSideBarPreferenceENDCLASS.stringdata0))
         return static_cast<void*>(this);
     return QWidget::qt_metacast(_clname);
 }
@@ -252,13 +306,13 @@ int SideBarPreference::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }
@@ -285,30 +339,36 @@ void SideBarPreference::checkBoxStateChangedStrategique(int _t1)
 }
 
 // SIGNAL 3
-void SideBarPreference::sliderValueChanged(int _t1)
+void SideBarPreference::CheckBoxesForPeriemetre(bool _t1, int _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 
 // SIGNAL 4
-void SideBarPreference::radarChanged(const QString & _t1, bool _t2)
+void SideBarPreference::sliderValueChanged(int _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 
 // SIGNAL 5
-void SideBarPreference::buttonClickedSignal(int _t1)
+void SideBarPreference::radarChanged(const QString & _t1, bool _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 
 // SIGNAL 6
+void SideBarPreference::buttonClickedSignal(int _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 6, _a);
+}
+
+// SIGNAL 7
 void SideBarPreference::combinaisonCtrlMActivated()
 {
-    QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 7, nullptr);
 }
 QT_WARNING_POP
-QT_END_MOC_NAMESPACE
