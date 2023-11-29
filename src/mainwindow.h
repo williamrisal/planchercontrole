@@ -22,7 +22,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-   /* void mousePressEvent(QMouseEvent* event)
+    void mousePressEvent(QMouseEvent* event)
     {
         QPoint globalPos = mapFromGlobal(event->globalPos());
         QScreen* screen = QGuiApplication::screenAt(globalPos);
@@ -43,7 +43,7 @@ public:
                 }
             }
         }
-    }*/
+    }
 
 
     ~MainWindow();

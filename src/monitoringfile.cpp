@@ -78,8 +78,14 @@ QJsonObject MonitoringFile::loadRadar(){
     QJsonObject jsonObj = LoadJson(GotoRacineFile() + QDir::separator() + "src"+ QDir::separator() + "RadarPosition.json");
    // trouver une solution ici pour que le path soi adapter
     return (jsonObj);
-
 }
+
+QJsonObject MonitoringFile::loadRadio(){
+    QJsonObject jsonObj = LoadJson(GotoRacineFile() + QDir::separator() + "Radio"+ QDir::separator() + "RadioPosition.json");
+    // trouver une solution ici pour que le path soi adapter
+    return (jsonObj);
+}
+
 QJsonObject MonitoringFile::loadPointStrategique(){
     QJsonObject jsonObj = LoadJson(GotoRacineFile() + QDir::separator() + "src"+ QDir::separator() + "Position_Strategique.json");
     return (jsonObj);

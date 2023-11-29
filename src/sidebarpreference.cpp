@@ -7,46 +7,51 @@
 
 #include <QSplitter>
 
-
 SideBarPreference::SideBarPreference(QWidget *parent)
 {
+    panelSubRight->setPanelSize(290);
+    panelSubRight->closePanel();
+
     panelRight->setOpenEasingCurve(QEasingCurve::Type::OutExpo);
     panelRight->setCloseEasingCurve(QEasingCurve::Type::InExpo);
-    panelRight->setPanelSize(280);
+    panelRight->setPanelSize(290);
     panelRight->init();
 
+    createLayouts();
+
+    QShortcut* Shortcut = new QShortcut(QKeySequence("Ctrl+W"), this);
+    connect(Shortcut, &QShortcut::activated, this, &SideBarPreference::buttonActive);
+}
+
+
+
+void SideBarPreference::createLayouts() {
     QVBoxLayout* rightLayout = new QVBoxLayout;
     QVBoxLayout* leftLayout = new QVBoxLayout;
-
-    // Créez le widget "Points culminants"
-    QWidget* CheckBoxOptionWidget = new QWidget(this);
-    QVBoxLayout* CheckBoxOptionLayout = new QVBoxLayout;
-    CheckBoxOptionLayout->addLayout(DisablePointCulminante());
-    CheckBoxOptionLayout->addLayout(ButtonStrategiquePoint());
-    CheckBoxOptionLayout->addLayout(CheckBoxesForPolygones());
-    CheckBoxOptionWidget->setLayout(CheckBoxOptionLayout);
-    CheckBoxOptionWidget->setStyleSheet("border: 1px solid #000; padding: 10px; border-radius: 5px;");
+    QVBoxLayout* SubLayout = new QVBoxLayout;
 
 
-    // Créez le widget "Choix radar"
-    QWidget* chooseRadarWidget = new QWidget(this);
-    QHBoxLayout* chooseRadarLayout = new QHBoxLayout;
-    chooseRadarLayout->addWidget(SliderAltitude());
-    chooseRadarLayout->addLayout(ButtonChooseRadar());
-    chooseRadarWidget->setLayout(chooseRadarLayout);
+    //main Panel
+    rightLayout->addLayout(createPolygonesLayout(Visibility::Show));
+    rightLayout->addWidget(createCheckBoxOptionWidget());
+    rightLayout->addWidget(createChooseRadarWidget());
+    rightLayout->addWidget(createChooseRadioWidget());
+    rightLayout->addLayout(createAdminLayout());
 
 
-    rightLayout->addWidget(CheckBoxOptionWidget); // Ajoutez les "Points culminants"
-    rightLayout->addWidget(chooseRadarWidget); // Ajoutez le "Choix radar"
-    rightLayout->addLayout(ButtonAdmin()); // Ajoutez le reste
-
+    //subpanel
+    SubLayout->addLayout(createPolygonesLayout(Visibility::Hide));
+    SubLayout->addWidget(createCheckBoxPolygoneWidget());
     QWidget* rightWidget = new QWidget(this);
     QWidget* leftWidget = new QWidget(this);
+    QWidget* SubWidget = new QWidget(this);
+
 
     rightWidget->setLayout(rightLayout);
     leftWidget->setLayout(leftLayout);
+    SubWidget->setLayout(SubLayout);
 
-    // Créez un QSplitter pour mettre leftWidget à gauche de rightWidget
+    // Utilisez le QSplitter comme contenu de panelRight
     QSplitter* splitter = new QSplitter(Qt::Horizontal, this);
     splitter->addWidget(leftWidget);
     splitter->addWidget(rightWidget);
@@ -56,11 +61,87 @@ SideBarPreference::SideBarPreference(QWidget *parent)
     splitter->setStretchFactor(1, 2); // rightWidget prend 2 parts
 
     panelRight->setWidgetResizable(true);
-    panelRight->setWidget(splitter); // Utilisez le QSplitter comme contenu de panelRight
-
-    QShortcut* Shortcut = new QShortcut(QKeySequence("Ctrl+W"), this);
-    connect(Shortcut, &QShortcut::activated, this, &SideBarPreference::buttonActive);
+    panelRight->setWidget(splitter);
+    panelSubRight->setWidget(SubWidget);
 }
+
+QWidget* SideBarPreference::createCheckBoxPolygoneWidget() {
+    QWidget* CheckBoxPolygoneWidget = new QWidget(this);
+    QVBoxLayout* CheckBoxPolygoneLayout = new QVBoxLayout;
+    CheckBoxPolygoneLayout->addLayout(CheckBoxesForPolygones());
+    CheckBoxPolygoneWidget->setLayout(CheckBoxPolygoneLayout);
+    CheckBoxPolygoneWidget->setStyleSheet("border: 1px solid #000; padding: 10px; border-radius: 5px; background-color: #f0f0f0;");
+    return CheckBoxPolygoneWidget;
+}
+
+
+QWidget* SideBarPreference::createCheckBoxOptionWidget() {
+    QWidget* CheckBoxOptionWidget = new QWidget(this);
+    QVBoxLayout* CheckBoxOptionLayout = new QVBoxLayout;
+    CheckBoxOptionLayout->addLayout(DisablePointCulminante());
+    CheckBoxOptionLayout->addLayout(ButtonStrategiquePoint());
+    CheckBoxOptionWidget->setLayout(CheckBoxOptionLayout);
+    CheckBoxOptionWidget->setStyleSheet("border: 1px solid #000; padding: 10px; border-radius: 5px; background-color: #f0f0f0;");
+    return CheckBoxOptionWidget;
+}
+
+QWidget* SideBarPreference::createChooseRadarWidget() {
+    QWidget* chooseRadarWidget = new QWidget(this);
+    QHBoxLayout* chooseRadarLayout = new QHBoxLayout;
+    chooseRadarLayout->addWidget(SliderAltitude());
+    chooseRadarLayout->addLayout(ButtonChooseRadar());
+    chooseRadarWidget->setLayout(chooseRadarLayout);
+    chooseRadarWidget->setStyleSheet("border: 1px solid #000; padding: 10px; border-radius: 5px; background-color: #f0f0f0;");
+    return chooseRadarWidget;
+}
+
+QWidget* SideBarPreference::createChooseRadioWidget() {
+    QWidget* chooseRadioWidget = new QWidget(this);
+    QHBoxLayout* chooseRadioLayout = new QHBoxLayout;
+    //chooseRadioLayout->addWidget(SliderAltitude());
+    chooseRadioLayout->addLayout(ButtonChooseRadio());
+    chooseRadioWidget->setLayout(chooseRadioLayout);
+    chooseRadioWidget->setStyleSheet("border: 1px solid #000; padding: 10px; border-radius: 5px; background-color: #f0f0f0;");
+    return chooseRadioWidget;
+}
+
+QVBoxLayout* SideBarPreference::createAdminLayout() {
+    QVBoxLayout* layout = new QVBoxLayout;
+
+    QStringList buttonLabels = { "<", ">", "^", "v", "+", "-" };
+
+    for (int i = 0; i < buttonLabels.size(); ++i) {
+        QPushButton* button = new QPushButton(buttonLabels[i], this);
+        button->hide();
+        layout->addWidget(button);
+        buttonsadmin.append(button);
+
+        connect(button, &QPushButton::clicked, this, [i, this]() {
+            emit buttonClickedSignal(i);
+        });
+    }
+
+    return layout;
+}
+
+QVBoxLayout* SideBarPreference::createPolygonesLayout(Visibility visibility) {
+    QVBoxLayout* layout = new QVBoxLayout();
+
+    if (visibility == Visibility::Show){
+        QPushButton* showAdditionalPanelButton = new QPushButton("Zones", this);
+        connect(showAdditionalPanelButton, &QPushButton::clicked, this, &SideBarPreference::showAdditionalPanel);
+        layout->addWidget(showAdditionalPanelButton);
+
+    }
+    else {
+        QPushButton* hideAdditionalPanelButton = new QPushButton("Revenir", this);
+        connect(hideAdditionalPanelButton, &QPushButton::clicked, this, &SideBarPreference::hideAdditionalPanel);
+        layout->addWidget(hideAdditionalPanelButton);
+    }
+
+    return layout;
+}
+
 
 
 QVBoxLayout* SideBarPreference::BoxPosition()
@@ -206,6 +287,25 @@ QVBoxLayout* SideBarPreference::ButtonChooseRadar()
     return layout;
 }
 
+QVBoxLayout* SideBarPreference::ButtonChooseRadio()
+{
+    QVBoxLayout* layout = new QVBoxLayout;
+
+    QList<QCheckBox*> checkBoxes;
+
+    checkBoxes << new QCheckBox("SRSA Istres");
+
+    for (QCheckBox* checkBox : checkBoxes) {
+        layout->addWidget(checkBox);
+
+        connect(checkBox, &QCheckBox::stateChanged, this, [this, checkBox](int state) {
+            emit checkBoxRadioStateChanged(checkBox->text(), state);
+        });
+    }
+
+    return layout;
+}
+
 
 QVBoxLayout* SideBarPreference::DisablePointCulminante(){
     QVBoxLayout* layout = new QVBoxLayout;
@@ -274,6 +374,48 @@ QVBoxLayout* SideBarPreference::CheckBoxesForPolygones() {
     return layout;
 }
 
+QVBoxLayout* SideBarPreference::ButtonPolygones() {
+    QVBoxLayout* layout = new QVBoxLayout();
+    int a = 0;
+
+    QPushButton* showAdditionalPanelButton = new QPushButton("Polygone", this);
+    connect(showAdditionalPanelButton, &QPushButton::clicked, this, &SideBarPreference::showAdditionalPanel);
+    layout->addWidget(showAdditionalPanelButton);
+
+    /*for (const auto& polygone : map.PolygoneList) {
+        QString checkBoxText = QString::fromStdString("Polygone ") + QString::number(a);
+
+        QCheckBox* checkBox = new QCheckBox(checkBoxText);
+        checkBox->setChecked(true);
+        layout->addWidget(checkBox);
+
+        connect(checkBox, &QCheckBox::stateChanged, [this, a](int state) {
+            emit CheckBoxesForPeriemetre(state, a);
+        });
+        a++;
+    }*/
+
+    return layout;
+}
+
+QVBoxLayout* SideBarPreference::ButtonClosePolygones() {
+    QVBoxLayout* layout = new QVBoxLayout();
+    QPushButton* hideAdditionalPanelButton = new QPushButton("Polygone", this);
+    connect(hideAdditionalPanelButton, &QPushButton::clicked, this, &SideBarPreference::hideAdditionalPanel);
+    layout->addWidget(hideAdditionalPanelButton);
+
+    return layout;
+}
+
+
+void SideBarPreference::showAdditionalPanel() {
+    panelSubRight->openPanel();
+}
+
+
+void SideBarPreference::hideAdditionalPanel() {
+    panelSubRight->closePanel();
+}
 
 
 

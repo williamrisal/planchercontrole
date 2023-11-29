@@ -29,7 +29,7 @@ class MapImage : public QGraphicsView {
 
 public:
     MapImage(QWidget *parent = nullptr);
-    void UpdateRadar(QVector3D position = {0,0,0});
+    void UpdateRadar(QVector3D position = {0,0,0});    
     Position_Aeronef Position;
     QRectF viewRect;
     Custommap mapCustom;
@@ -42,9 +42,11 @@ public:
     bool StrategiqueActivate = true;
     QPointF positionRadar;
     void setPoint(int Choose);
+    void SowElementRadio(QString Radar, bool Activate);
     void traitementDossierPeriemetre();
     QList<QGraphicsItem*> PolygoneList;
     void ShowElementPeriemetre(bool Activate, int a);
+    void UpdateRadio(QVector3D positionRadar);
 
 
 
@@ -82,33 +84,43 @@ public slots:
             position.setX(-5);
             position.setY(0);
             this->UpdateRadar(position);
+           this->UpdateRadio(position);
         }
         if(i == 1){
             position.setX(5);
             position.setY(0);
             this->UpdateRadar(position);
+            this->UpdateRadio(position);
+
         }
         if(i == 2){
             position.setX(0);
             position.setY(-5);
             this->UpdateRadar(position);
+            this->UpdateRadio(position);
+
         }
         if(i == 3){
             position.setX(0);
             position.setY(5);
             this->UpdateRadar(position);
+            this->UpdateRadio(position);
         }
         if(i == 4){
             position.setX(0);
             position.setY(0);
             position.setZ(5);
             this->UpdateRadar(position);
+            this->UpdateRadio(position);
+
         }
         if(i == 5){
             position.setX(0);
             position.setY(0);
             position.setZ(-5);
             this->UpdateRadar(position);
+            this->UpdateRadio(position);
+
         }
     }
 
@@ -116,7 +128,11 @@ public slots:
 private:
     QGraphicsScene* scene;
     QMap<QString, QPointF> checkedRadars;
+    QMap<QString, QPointF> checkedRadios;
+
     QMap<QString, QGraphicsItem*> radarItems;
+    QMap<QString, QGraphicsItem*> radioItems;
+
     Custommap m_Custommap;
     QList<QGraphicsItem*> CulminanteList;
     QList<QGraphicsItem*> StrategiqueList;

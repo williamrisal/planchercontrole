@@ -41,7 +41,7 @@ void MapImage::showOnlyRadar(QString Radar, bool Activate) {
 
             QString positionPath = loadFile.GotoRacineFile() + QDir::separator() + "capture"+ QDir::separator() + radarInfo["Image_Path"].toString();
 
-            radarPath = positionPath + QString::number(altitude) + "ft.png";
+            radarPath = positionPath + QString::number(altitude) + ".png";
             qDebug() << radarPath;
 
             if (QFile::exists(radarPath)) {
@@ -87,7 +87,7 @@ void MapImage::UpdateRadar(QVector3D positionRadar) {
         rectification = math.ConvertStringtoQVector3D(radarInfo["Rectification"].toString()) + positionRadar;
 
 
-        radarPath = positionPath + radarInfo["Image_Path"].toString() + QString::number(altitude) + "ft.png";
+        radarPath = positionPath + radarInfo["Image_Path"].toString() + QString::number(altitude) + ".png";
         loadFile.modifyJsonFile(loadFile.GotoRacineFile() + QDir::separator() + "src"+ QDir::separator() + "RadarPosition.json",it.key(),rectification);
 
         QPixmap radarImage(radarPath);
@@ -102,7 +102,6 @@ void MapImage::UpdateRadar(QVector3D positionRadar) {
         pixmapItem->setPos(positionCartesienne + QPointF(rectification.x(), rectification.y()));
         pixmapItem->setOpacity(0.6);
 
-
         if (scene->items().contains(it.value())) {
             scene->removeItem(it.value());
         }
@@ -110,6 +109,45 @@ void MapImage::UpdateRadar(QVector3D positionRadar) {
 
         scene->addItem(pixmapItem);
         radarItems.insert(it.key(), pixmapItem);
+    }
+}
+
+void MapImage::UpdateRadio(QVector3D positionRadio) {
+
+    QJsonObject RadioVille = loadFile.loadRadio();
+    QString RadioPath;
+    QJsonObject RadioInfo;
+    QVector3D rectification;
+
+    QString positionPath = loadFile.GotoRacineFile() + QDir::separator() + "Radio"+ QDir::separator() + RadioInfo["Image_Path"].toString();
+    for (auto it = radioItems.begin(); it != radioItems.end(); ++it) {
+        RadioInfo = RadioVille[it.key()].toObject();
+        rectification = math.ConvertStringtoQVector3D(RadioInfo["Rectification"].toString()) + positionRadio;
+
+        RadioPath = positionPath + RadioInfo["Image_Path"].toString();
+        loadFile.modifyJsonFile(loadFile.GotoRacineFile() + QDir::separator() + "Radio"+ QDir::separator() + "RadioPosition.json",it.key(),rectification);
+        qDebug() << RadioPath;
+
+        QPixmap RadioImage(RadioPath);
+        int nouvelleLargeur = RadioImage.width() + rectification.z();
+        int nouvelleHauteur = RadioImage.height() + rectification.z();
+
+        QPixmap imageRedimensionnee = RadioImage.scaled(nouvelleLargeur, nouvelleHauteur);
+
+        QGraphicsPixmapItem* pixmapItem = new QGraphicsPixmapItem(imageRedimensionnee);
+
+        QPointF positionCartesienne = Position.GeoToCartosienne(RadioInfo["Position"].toString());
+        pixmapItem->setPos(positionCartesienne + QPointF(rectification.x(), rectification.y()));
+        pixmapItem->setOpacity(0.6);
+
+
+        if (scene->items().contains(it.value())) {
+            scene->removeItem(it.value());
+        }
+        qDebug() << "test";
+
+        scene->addItem(pixmapItem);
+        radioItems.insert(it.key(), pixmapItem);
     }
 }
 
@@ -233,6 +271,50 @@ void MapImage::ShowElementPeriemetre(bool Activate, int a){
         }
         else {
             scene->addItem(PolygoneList.at(a));
+        }
+    }
+}
+
+
+void MapImage::SowElementRadio(QString Radio, bool Activate){
+
+    QJsonObject RadioVille = loadFile.loadRadio();
+    QJsonObject RadioInfo = RadioVille[Radio].toObject();
+    QString RadioPath;
+    QVector3D rectification = math.ConvertStringtoQVector3D(RadioInfo["Rectification"].toString());
+
+    if (Activate) {
+        if (!checkedRadios.contains(Radio)) {
+            checkedRadios.insert(Radio, {0, 0});
+
+            QString RadioPath = loadFile.GotoRacineFile() + QDir::separator() + "Radio"+ QDir::separator() + RadioInfo["Image_Path"].toString();
+
+            qDebug() << RadioPath;
+
+            if (QFile::exists(RadioPath)) {
+
+                QPixmap RadioImage(RadioPath);
+                int nouvelleLargeur = RadioImage.width() + rectification.z();
+                int nouvelleHauteur = RadioImage.height() + rectification.z();
+
+                QPixmap imageRedimensionnee = RadioImage.scaled(nouvelleLargeur, nouvelleHauteur);
+
+                QGraphicsPixmapItem* pixmapItem = new QGraphicsPixmapItem(imageRedimensionnee);
+                QPointF positionCartesienne = Position.GeoToCartosienne(RadioInfo["Position"].toString());
+                pixmapItem->setPos(positionCartesienne + QPointF(rectification.x(), rectification.y()));
+                pixmapItem->setOpacity(0.6); // Mettez l'opacité souhaitée ici
+
+
+                scene->addItem(pixmapItem);
+                radioItems.insert(Radio, pixmapItem);
+            }
+        }
+    } else {
+        checkedRadios.remove(Radio);
+        auto it = radioItems.find(Radio);
+        if (it != radioItems.end()) {
+            scene->removeItem(*it);
+            radioItems.erase(it);
         }
     }
 }

@@ -1,36 +1,36 @@
 {
     "DI Istres": {
-        "Image_Path": "Radar Aladin Istres DI/capture_DI_",
+        "Image_Path": "Radar Aladin Istres DI/DI_",
         "Position": "N43°31'26' E04°55'33'",
         "Rectification": "{0,0,0}"
     },
     "DS Salon de Provence": {
-        "Image_Path": "Radar Centaure Salon DS/capture_DS_",
+        "Image_Path": "Radar Centaure Salon DS/DS_",
         "Position": "N43°36'11' E05°06'29'",
         "Rectification": "{-910,-555,65}"
     },
     "GV Vitrolles": {
-        "Image_Path": "Radar TRAC2000 Vitrolles GV/capture_GV_",
+        "Image_Path": "Radar TRAC2000 Vitrolles GV/GV_",
         "Position": "N43°28'10' E05°14'43'",
         "Rectification": "{0,0,0}"
     },
     "JO Montpellier": {
-        "Image_Path": "Radar RMI Montpellier JO/capture_JO_",
+        "Image_Path": "Radar RMI Montpellier JO/_JO_",
         "Position": "N43°47'12' E03°14'44'",
         "Rectification": "{0,0,0}"
     },
     "JX Ventoux": {
-        "Image_Path": "Radar RMI Mont Ventoux JX/capture_JX_",
+        "Image_Path": "Radar RMI Mont Ventoux JX/JX_",
         "Position": "N44°10'27' E05°16'06'",
-        "Rectification": "{-890,-470,35}"
+        "Rectification": "{-880,-470,35}"
     },
     "RO Narbonne": {
-        "Image_Path": "Radar TRAC2400 Narbonne/capture_RO_",
+        "Image_Path": "Radar TRAC2400 Narbonne/RO_",
         "Position": "N43°10'28' E03°07'18'",
-        "Rectification": "{-660,-630,75}"
+        "Rectification": "{-610,-655,65}"
     },
     "RS Sainte Baume": {
-        "Image_Path": "Radar TRAC2400 Sainte Baume RS/capture_RS_",
+        "Image_Path": "Radar TRAC2400 Sainte Baume RS/RS_",
         "Position": "N43°18'42' E05°41'21'",
         "Rectification": "{0,0,0}"
     }

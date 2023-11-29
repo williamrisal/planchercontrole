@@ -23,6 +23,10 @@
 #include "src/mapimage.hpp"
 #include <QPushButton>
 
+enum class Visibility : bool {
+    Show = true,
+    Hide = false
+};
 
 class SideBarPreference : public QWidget
 {
@@ -33,21 +37,38 @@ public:
     QVBoxLayout *BoxPosition();
     void CompletePositionBox(QString Position_Aeronef);
     QVBoxLayout* ButtonChooseRadar();
+    QVBoxLayout* ButtonChooseRadio();
     QVBoxLayout* DisablePointCulminante();
     QVBoxLayout* ButtonAdmin();
+    void confirmClose(QShortcut *Shortcut);
     QVBoxLayout* ButtonStrategiquePoint();
     QVBoxLayout* CheckBoxesForPolygones();
+    QVBoxLayout *ButtonPolygones();
+    void showAdditionalPanel();
+    void hideAdditionalPanel();
+    QVBoxLayout* ButtonClosePolygones();
+    QWidget* createCheckBoxOptionWidget();
+    QWidget* createChooseRadarWidget();
+    QVBoxLayout* createAdminLayout();
+    QVBoxLayout* createPolygonesLayout(Visibility visibility);
+    QWidget* createCheckBoxPolygoneWidget();
+    QWidget* createChooseRadioWidget();
+    void createLayouts();
     MapImage map;
 
 
 public slots:
     void buttonActive(){
         if (ButtonAdminBool == false) {
-            for (QPushButton* button : buttonsadmin) {
-                button->show();
-                ButtonAdminBool = true;
-
+            QMessageBox::StandardButton reply;
+            reply = QMessageBox::question(this, "Fermeture", "Voulez-vous vraiment ouvrir le Mode Edition ?", QMessageBox::Yes | QMessageBox::No);
+            if (reply == QMessageBox::Yes) {
+                for (QPushButton* button : buttonsadmin) {
+                    button->show();
+                    ButtonAdminBool = true;
+                }
             }
+            return;
         }
         else
             for (QPushButton* button : buttonsadmin) {
@@ -62,6 +83,8 @@ public slots:
 
 signals:
     void checkBoxRadarStateChanged(const QString& checkBoxText, int state);
+    void checkBoxRadioStateChanged(const QString& checkBoxText, int state);
+
     void checkBoxStateChangedCulminante(int state);
     void checkBoxStateChangedStrategique(int state);
     void CheckBoxesForPeriemetre(bool state, int a);
@@ -77,6 +100,7 @@ private:
     QVBoxLayout* Adminlayout = new QVBoxLayout;
     QVector<QPushButton*> buttonsadmin;
     PanelRightSide* panelRight = new PanelRightSide(this);
+    PanelRightSide* panelSubRight = new PanelRightSide(this);
     QLineEdit* lineEdit1;
     QLineEdit* lineEdit2;
     bool ButtonAdminBool = false;

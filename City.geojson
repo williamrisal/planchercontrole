@@ -220,6 +220,26 @@
         "type": "Point",
         "coordinates": [0.703125, 47.394144]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Nîmes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.360054, 43.837425]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ville": "Avignon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.805528, 43.949249]
+      }
     }
   ]
 }

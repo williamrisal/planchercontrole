@@ -11,6 +11,7 @@ public:
     void modifyJsonFile(const QString &filePath, const QString &RadarName, const QVector3D Rectification);
     QJsonObject loadPointStrategique();
     QJsonObject loadRadar();
+    QJsonObject loadRadio();
     QString GotoRacineFile();
 
 };

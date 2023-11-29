@@ -105,6 +105,14 @@ DIST          = ../City.geojson \
 		../Perimetre/carre_paca.geojson \
 		../Perimetre/main.py \
 		../Perimetre/polygone_paca.geojson \
+		../Radio/SRSA \
+		../Istres-2.png \
+		../Radio/SRSA \
+		../Istres-2.png \
+		../Radio/SRSA \
+		../Istres-2.png \
+		../Radio/SRSA \
+		../Istres-2.png \
 		../Region/PathRegion.json \
 		../Region/region-auvergne-rhone-alpes.geojson \
 		../Region/region-bretagne.geojson \
@@ -1426,6 +1434,35 @@ moc_sidebarpreference.cpp: ../src/sidebarpreference.hpp \
 		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../src/mapimage.hpp \
+		../src/Custommap.hpp \
+		../src/monitoringfile.hpp \
+		../src/position_aeronef.hpp \
+		../GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
+		../GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
+		../GeographicLib-2.2/include/GeographicLib/Constants.hpp \
+		../GeographicLib-2.2/include/GeographicLib/Config.h \
+		../GeographicLib-2.2/include/GeographicLib/Math.hpp \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../src/ShowImage.hpp \
+		../../../../Qt/6.6.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.6.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QSlider \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qslider.h \
+		../src/mathAero.hpp \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../../Qt/6.6.0/macos/lib/QtCore.framework/Headers/QPointF \
+		../../../../Qt/6.6.0/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../../Qt/6.6.0/macos/lib/QtCore.framework/Headers/QMap \
+		../../../../Qt/6.6.0/macos/lib/QtCore.framework/Headers/qmap.h \
 		../../../../Qt/6.6.0/macos/libexec/moc
 	/Users/williamrisal/Qt/6.6.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/williamrisal/Qt/6.6.0/macos/mkspecs/macx-clang -I'/Users/williamrisal/Documents/DGA projet/planchercontrole' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/QSidePanel-Sidebar-master/QSidePanel' -I'/Users/williamrisal/Documents/DGA projet/planchercontrole/GeographicLib-2.2/include' -I/Users/williamrisal/Qt/6.6.0/macos/lib/QtWidgets.framework/Headers -I/Users/williamrisal/Qt/6.6.0/macos/lib/QtGui.framework/Headers -I/Users/williamrisal/Qt/6.6.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.0.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/williamrisal/Qt/6.6.0/macos/lib ../src/sidebarpreference.hpp -o moc_sidebarpreference.cpp
 
@@ -1827,6 +1864,35 @@ sidebarpreference.o: ../src/sidebarpreference.cpp ../src/sidebarpreference.hpp \
 		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../QSidePanel-Sidebar-master/QSidePanel/QSidePanel/SidePanelState.hpp \
 		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
+		../src/mapimage.hpp \
+		../src/Custommap.hpp \
+		../src/monitoringfile.hpp \
+		../src/position_aeronef.hpp \
+		../GeographicLib-2.2/include/GeographicLib/LocalCartesian.hpp \
+		../GeographicLib-2.2/include/GeographicLib/Geocentric.hpp \
+		../GeographicLib-2.2/include/GeographicLib/Constants.hpp \
+		../GeographicLib-2.2/include/GeographicLib/Config.h \
+		../GeographicLib-2.2/include/GeographicLib/Math.hpp \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../src/ShowImage.hpp \
+		../../../../Qt/6.6.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.6.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QLabel \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QFileDialog \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qfiledialog.h \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QSlider \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qslider.h \
+		../src/mathAero.hpp \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../../../../Qt/6.6.0/macos/lib/QtCore.framework/Headers/QPointF \
+		../../../../Qt/6.6.0/macos/lib/QtCore.framework/Headers/qpoint.h \
+		../../../../Qt/6.6.0/macos/lib/QtCore.framework/Headers/QMap \
+		../../../../Qt/6.6.0/macos/lib/QtCore.framework/Headers/qmap.h \
 		../../../../Qt/6.6.0/macos/lib/QtGui.framework/Headers/qpainter.h \
 		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/QCheckBox \
 		../../../../Qt/6.6.0/macos/lib/QtWidgets.framework/Headers/qcheckbox.h \

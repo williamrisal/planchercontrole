@@ -43,6 +43,10 @@ DISTFILES += \
     Perimetre/carre_paca.geojson \
     Perimetre/main.py \
     Perimetre/polygone_paca.geojson \
+    Radio/SRSA Istres-2.png \
+    Radio/SRSA Istres-2.png \
+    Radio/SRSA Istres-2.png \
+    Radio/SRSA Istres-2.png \
     Region/PathRegion.json \
     Region/region-auvergne-rhone-alpes.geojson \
     Region/region-bretagne.geojson \
