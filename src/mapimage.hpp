@@ -7,6 +7,7 @@
 #include "src/ShowImage.hpp"
 #include "src/mathAero.hpp"
 #include "src/position_aeronef.hpp"
+
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QPixmap>
@@ -47,6 +48,9 @@ public:
     QList<QGraphicsItem*> PolygoneList;
     void ShowElementPeriemetre(bool Activate, int a);
     void UpdateRadio(QVector3D positionRadar);
+    void mouseMoveEvent(QMouseEvent *event);
+
+
 
 
 
@@ -138,6 +142,8 @@ private:
     QList<QGraphicsItem*> StrategiqueList;
     MonitoringFile loadFile;
     mathAero math;
+    QLabel* mousePositionLabel; // Label pour afficher la position de la souris
+
 };
 
 #endif // MAPIMAGE_H

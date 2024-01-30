@@ -289,34 +289,11 @@ DIST          = ../City.geojson \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_qmlxmllistmodel.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_qmlxmllistmodel_private.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3d.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3d_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetimport.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetimport_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetutils.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetutils_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3deffects.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3deffects_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dglslparser_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpers.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpers_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpersimpl.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpersimpl_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3diblbaker.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3diblbaker_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticleeffects.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticleeffects_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticles.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticles_private.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysics.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysics_private.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysicshelpers.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysicshelpers_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3druntimerender.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3druntimerender_private.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dspatialaudio_private.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dutils.pri \
-		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dutils_private.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick_private.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quickcontrols2.pri \
 		/Users/Qt/6.6.0/macos/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
@@ -664,34 +641,11 @@ Makefile: ../PlancherControle.pro ../../../../Qt/6.6.0/macos/mkspecs/features/sp
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_qmlxmllistmodel.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_qmlxmllistmodel_private.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3d.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3d_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetimport.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetimport_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetutils.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetutils_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3deffects.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3deffects_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dglslparser_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpers.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpers_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpersimpl.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpersimpl_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3diblbaker.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3diblbaker_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticleeffects.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticleeffects_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticles.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticles_private.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysics.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysics_private.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysicshelpers.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysicshelpers_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3druntimerender.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3druntimerender_private.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dspatialaudio_private.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dutils.pri \
-		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dutils_private.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick_private.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quickcontrols2.pri \
 		../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quickcontrols2_private.pri \
@@ -990,34 +944,11 @@ Makefile: ../PlancherControle.pro ../../../../Qt/6.6.0/macos/mkspecs/features/sp
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_qmlxmllistmodel.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_qmlxmllistmodel_private.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3d.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3d_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetimport.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetimport_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetutils.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dassetutils_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3deffects.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3deffects_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dglslparser_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpers.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpers_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpersimpl.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dhelpersimpl_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3diblbaker.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3diblbaker_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticleeffects.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticleeffects_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticles.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dparticles_private.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysics.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysics_private.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysicshelpers.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dphysicshelpers_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3druntimerender.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3druntimerender_private.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dspatialaudio_private.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dutils.pri:
-../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick3dutils_private.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quick_private.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quickcontrols2.pri:
 ../../../../Qt/6.6.0/macos/mkspecs/modules/qt_lib_quickcontrols2_private.pri:

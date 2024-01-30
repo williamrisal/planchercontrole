@@ -63,6 +63,7 @@ void SideBarPreference::createLayouts() {
     panelRight->setWidgetResizable(true);
     panelRight->setWidget(splitter);
     panelSubRight->setWidget(SubWidget);
+
 }
 
 QWidget* SideBarPreference::createCheckBoxPolygoneWidget() {
@@ -131,16 +132,18 @@ QVBoxLayout* SideBarPreference::createPolygonesLayout(Visibility visibility) {
         QPushButton* showAdditionalPanelButton = new QPushButton("Zones", this);
         connect(showAdditionalPanelButton, &QPushButton::clicked, this, &SideBarPreference::showAdditionalPanel);
         layout->addWidget(showAdditionalPanelButton);
-
     }
     else {
+
         QPushButton* hideAdditionalPanelButton = new QPushButton("Revenir", this);
         connect(hideAdditionalPanelButton, &QPushButton::clicked, this, &SideBarPreference::hideAdditionalPanel);
+        // Connectez le bouton "Revenir" à la méthode pour supprimer panelSubRight
         layout->addWidget(hideAdditionalPanelButton);
     }
 
     return layout;
 }
+
 
 
 
@@ -409,12 +412,30 @@ QVBoxLayout* SideBarPreference::ButtonClosePolygones() {
 
 
 void SideBarPreference::showAdditionalPanel() {
+    if (panelSubRight == nullptr) {
+        panelSubRight = new PanelRightSide(this);
+        QVBoxLayout* SubLayout = new QVBoxLayout;
+
+        // Subpanel
+        SubLayout->addLayout(createPolygonesLayout(Visibility::Hide));
+        SubLayout->addWidget(createCheckBoxPolygoneWidget());
+        QWidget* SubWidget = new QWidget(this);
+        SubWidget->setLayout(SubLayout);
+        panelSubRight->setPanelSize(290);
+
+        panelSubRight->setWidget(SubWidget);
+    }
     panelSubRight->openPanel();
 }
 
 
+
 void SideBarPreference::hideAdditionalPanel() {
-    panelSubRight->closePanel();
+    if (panelSubRight != nullptr) {
+        panelSubRight->closePanel();
+        delete panelSubRight;
+        panelSubRight = nullptr;
+    }
 }
 
 

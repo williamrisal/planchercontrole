@@ -25,7 +25,13 @@ MapImage::MapImage(QWidget *parent) : QGraphicsView(parent) {
     setPointculminant();
     m_Custommap.showAirport(&Position, scene);
     traitementDossierPeriemetre();
-    show();
+    mousePositionLabel = new QLabel(this);
+  //  mousePositionLabel->setStyleSheet("background-color: rgba(255, 255, 255, 150);"); // Style de l'arrière-plan
+    mousePositionLabel->setFixedSize(280, 20); // Taille du label
+    mousePositionLabel->move(10, height() - mousePositionLabel->height() - 10); // Position dans le coin inférieur gauche
+
+    viewport()->installEventFilter(this);
+    scene->addWidget(mousePositionLabel);
 }
 
 void MapImage::showOnlyRadar(QString Radar, bool Activate) {
@@ -105,8 +111,6 @@ void MapImage::UpdateRadar(QVector3D positionRadar) {
         if (scene->items().contains(it.value())) {
             scene->removeItem(it.value());
         }
-        qDebug() << "test";
-
         scene->addItem(pixmapItem);
         radarItems.insert(it.key(), pixmapItem);
     }
@@ -126,7 +130,6 @@ void MapImage::UpdateRadio(QVector3D positionRadio) {
 
         RadioPath = positionPath + RadioInfo["Image_Path"].toString();
         loadFile.modifyJsonFile(loadFile.GotoRacineFile() + QDir::separator() + "Radio"+ QDir::separator() + "RadioPosition.json",it.key(),rectification);
-        qDebug() << RadioPath;
 
         QPixmap RadioImage(RadioPath);
         int nouvelleLargeur = RadioImage.width() + rectification.z();
@@ -144,7 +147,6 @@ void MapImage::UpdateRadio(QVector3D positionRadio) {
         if (scene->items().contains(it.value())) {
             scene->removeItem(it.value());
         }
-        qDebug() << "test";
 
         scene->addItem(pixmapItem);
         radioItems.insert(it.key(), pixmapItem);
@@ -160,7 +162,6 @@ void MapImage::setPathPoylgone(){
         QString path = villeObj["path"].toString();
         m_Custommap.drawMultiPolygon(*scene, &Position, loadFile.GotoRacineFile() + QDir::separator() + "Region" + QDir::separator() + path);
         qDebug() << path;
-
     }
     qDebug() << loadFile.GotoRacineFile() + QDir::separator() + "Region" + QDir::separator() + "regions.geojson";
     m_Custommap.drawPolygon(*scene, &Position, loadFile.GotoRacineFile() + QDir::separator() + "Region" + QDir::separator() + "regions.geojson");
@@ -279,9 +280,7 @@ void MapImage::ShowElementPeriemetre(bool Activate, int a){
 void MapImage::SowElementRadio(QString Radio, bool Activate){
 
     QJsonObject RadioVille = loadFile.loadRadio();
-    QJsonObject RadioInfo = RadioVille[Radio].toObject();
-    QString RadioPath;
-    QVector3D rectification = math.ConvertStringtoQVector3D(RadioInfo["Rectification"].toString());
+    QJsonObject RadioInfo = RadioVille[Radio].toObject();    QVector3D rectification = math.ConvertStringtoQVector3D(RadioInfo["Rectification"].toString());
 
     if (Activate) {
         if (!checkedRadios.contains(Radio)) {
@@ -318,6 +317,17 @@ void MapImage::SowElementRadio(QString Radio, bool Activate){
         }
     }
 }
+
+void MapImage::mouseMoveEvent(QMouseEvent *event) {
+    // Récupération des coordonnées de la souris et conversion en coordonnées de la scène
+    QPointF scenePos = mapToScene(event->pos());
+    QPointF GeographieDecimal = Position.CartesienneToGeographieDecimal(QPointF(scenePos.x(), scenePos.y()));
+    // Affichage des coordonnées de la souris dans le label
+    QString posText = QString("Position : Lat %1, Lon: %2").arg(GeographieDecimal.x()).arg(GeographieDecimal.y());
+    mousePositionLabel->setText(posText);
+    QGraphicsView::mouseMoveEvent(event); // N'oubliez pas d'appeler la fonction de la classe de base
+}
+
 void MapImage::zoomIn() {
     scale(1.2, 1.2);
 }

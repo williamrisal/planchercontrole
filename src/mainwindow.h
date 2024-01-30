@@ -12,6 +12,7 @@
 #include "ui_mainwindow.h"
 #include "mapimage.hpp"
 #include "sidebarpreference.hpp"
+#include "position_aeronef.hpp"
 #include <QShortcut>
 
 
@@ -19,10 +20,10 @@
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
+    Position_Aeronef Position;
 public:
     MainWindow(QWidget *parent = nullptr);
-    void mousePressEvent(QMouseEvent* event)
+ /*   void mousePressEvent(QMouseEvent* event)
     {
         QPoint globalPos = mapFromGlobal(event->globalPos());
         QScreen* screen = QGuiApplication::screenAt(globalPos);
@@ -36,14 +37,15 @@ public:
             int b = color.blue();
 
             qDebug() << "RGB: " << r << g << b;
-
-            if ((r < 81 || r > 83) || (g < 84 || g > 86) || (b < 89 || b > 91)) {
-                if (r !=  94 || g != 91 || b != 90){
-                    QMessageBox::information(this, "Popup", "Trouvé");
-                }
+            QMessageBox::information(this, "Popup", "Trouvé");
+            qDebug() << "test:";
+            QPointF test = Position.CartesienneToGeographieDecimal(QPointF(globalPos.x(), globalPos.y())) ;
+            qDebug() << "test:";
+            qDebug() << test.x();
+            qDebug() << test.y();
             }
-        }
-    }
+
+    }*/
 
 
     ~MainWindow();
